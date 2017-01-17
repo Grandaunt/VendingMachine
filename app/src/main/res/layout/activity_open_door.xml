@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_open_door"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.sjs.vendingmachine.OpenDoorActivity">
+    <Button
+        android:id="@+id/open_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开第一个门" />
+    <Button
+        android:id="@+id/open_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开第二个门" />
+    <Button
+        android:id="@+id/open_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开第三个门" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/open_four"
+        android:text="打开第四个门" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/open_five"
+        android:text="打开第五个门" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/open_six"
+        android:text="打开第六个门" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/open_seven"
+        android:text="打开第七个门" />
+
+</LinearLayout>

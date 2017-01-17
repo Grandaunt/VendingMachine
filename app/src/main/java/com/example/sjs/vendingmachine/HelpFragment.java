@@ -1,6 +1,7 @@
 package com.example.sjs.vendingmachine;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -12,7 +13,7 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HelpFragment.OnFragmentInteractionListener} interface
+ * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link HelpFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -63,6 +64,9 @@ public class HelpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+//        Intent intent = new Intent(getActivity(),PayActivity.class);
+////                intent.putExtra("MainActivity", "message");
+//        startActivity(intent);
         return inflater.inflate(R.layout.fragment_help, container, false);
     }
 

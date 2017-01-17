@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import com.example.sjs.vendingmachine.R;
 
+import java.util.List;
+
 /**
  * Created by SJS on 2017/1/4.
  */
@@ -39,6 +41,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         //view.setBackgroundColor(Color.RED);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
+//        MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
+//                HomeActivity.this).inflate(R.layout.item_home, parent,
+//                false));
+//        return holder;
     }
 
 
@@ -49,8 +55,34 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
      * @param position
      */
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
 //        holder.item_tv.setText(mTitles[position]);
+//        holder.tv.setText(mDatas.get(position));
+
+        // 如果设置了回调，则设置点击事件
+        if (mOnItemClickLitener != null)
+        {
+            holder.itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    int pos = holder.getLayoutPosition();
+                    mOnItemClickLitener.onItemClick(holder.itemView, pos);
+                }
+            });
+
+//            holder.itemView.setOnLongClickListener(new View.OnLongClickListener()
+//            {
+//                @Override
+//                public boolean onLongClick(View v)
+//                {
+//                    int pos = holder.getLayoutPosition();
+//                    mOnItemClickLitener.onItemLongClick(holder.itemView, pos);
+//                    return false;
+//                }
+//            });
+        }
     }
 
     @Override
@@ -68,13 +100,28 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
     }
 
-//    public void addData(int position) {
+    public void addData(int position) {
 //        mDatas.add(position, "Insert One");
-//        notifyItemInserted(position);
-//    }
-//
-//    public void removeData(int position) {
+        notifyItemInserted(position);
+    }
+
+    public void removeData(int position) {
 //        mDatas.remove(position);
-//        notifyItemRemoved(position);
-//    }
+        notifyItemRemoved(position);
+    }
+
+    public interface OnItemClickLitener
+    {
+        void onItemClick(View view, int position);
+        void onItemLongClick(View view, int position);
+    }
+
+    private OnItemClickLitener mOnItemClickLitener;
+
+    public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener)
+    {
+        this.mOnItemClickLitener = mOnItemClickLitener;
+    }
+
+
 }

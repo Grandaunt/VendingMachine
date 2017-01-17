@@ -3,12 +3,11 @@ package com.example.sjs.vendingmachine;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -17,12 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ashokvarma.bottomnavigation.BottomNavigationBar;
-import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.example.sjs.vendingmachine.View.FloatView;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 
@@ -57,9 +51,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Log.i(TAG,"<<onCreate>>");
           floatView  = new FloatView(getApplicationContext());
-          floatView.setText("已投入： 0 元");
+          floatView.setText("已投币： 0 元");
           floatView.setTextColor(Color.WHITE);
-          floatView.setBackgroundColor(Color.RED);
+          floatView.setBackgroundColor(Color.parseColor("#990022"));
+          floatView.setGravity(Gravity.CENTER);
 //          floatView.setTextSize(10);
 
           tv_goods = (TextView)findViewById(R.id.text_goods);
@@ -78,43 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-        /***
-         * MODE_DEFAULT
-         如果Item的个数<=3就会使用MODE_FIXED模式，否则使用MODE_SHIFTING模式
-         MODE_FIXED
-         填充模式，未选中的Item会显示文字，没有换挡动画。
-         MODE_SHIFTING
-         换挡模式，未选中的Item不会显示文字，选中的会显示文字。在切换的时候会有一个像换挡的动画
-         BACKGROUND_STYLE_STATIC
-         点击的时候没有水波纹效果
-         n-active color
-         表示未选中Item中的图标和文本颜色。默认为 Color.LTGRAY
-         active color :
-         在BACKGROUND_STYLE_STATIC下，表示选中Item的图标和文本颜色。而在BACKGROUND_STYLE_RIPPLE下，表示整个容器的背景色。默认Theme's Primary Color
-         background color :
-         在BACKGROUND_STYLE_STATIC下，表示整个容器的背景色。而在BACKGROUND_STYLE_RIPPLE下，表示选中Item的图标和文本颜色。默认 Color.WHITE
-         */
-//        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
-//        bottomNavigationBar.setMode(BottomNavigationBar.MODE_DEFAULT);
-//        bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
-//        bottomNavigationBar
-//                .setActiveColor(R.color.colorPrimary)
-//                .setInActiveColor(R.color.Black)
-//                .setBarBackgroundColor(R.color.White);
-//        bottomNavigationBar
-//                .addItem(new BottomNavigationItem(R.mipmap.ic_goods_black_200dp, "商品").setActiveColor(R.color.Red).setInActiveColor(R.color.Black))
-////                        .setInActiveColor(R.color.Orange))
-//                .addItem(new BottomNavigationItem(R.mipmap.ic_fetchcode_black_200, "提取码").setActiveColor(R.color.Red).setInActiveColor(R.color.Black))
-//                .addItem(new BottomNavigationItem(R.mipmap.ic_help_black_200dp, "帮助").setActiveColor(R.color.Red))
-////                .addItem(new BottomNavigationItem(R.mipmap.ic_book_white_24dp, "图书").setActiveColor(R.color.blue))
-//                .setFirstSelectedPosition(lastSelectedPosition)
-//                .initialise();
-//
-//        bottomNavigationBar.setTabSelectedListener(this);
-//        setDefaultFragment();
-//        // ATTENTION: This was auto-generated to implement the App Indexing API.
-//        // See https://g.co/AppIndexing/AndroidStudio for more information.
-//        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
     /**
@@ -131,78 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showFloatView();
     }
 
-//    @Override
-//    public void onTabSelected(int position) {
-//        Log.d(TAG, "onTabSelected() called with: " + "position = [" + position + "]");
-//        FragmentManager fm = this.getFragmentManager();
-//        //开启事务
-//        FragmentTransaction transaction = fm.beginTransaction();
-//        switch (position) {
-//            case 0:
-//                if (mGoodsFragment == null) {
-//                    mGoodsFragment = GoodsFragment.newInstance("商品");
-//                }
-//                transaction.replace(R.id.tb, mGoodsFragment);
-//                break;
-//            case 1:
-//                if (mFetchCodeFragment == null) {
-//                    mFetchCodeFragment = FetchCodeFragment.newInstance("提取码");
-//                }
-//                transaction.replace(R.id.tb, mFetchCodeFragment);
-//                break;
-//            case 2:
-//                if (mHelpFragment == null) {
-//                    mHelpFragment = HelpFragment.newInstance("帮助");
-//                }
-//                transaction.replace(R.id.tb, mHelpFragment);
-//                break;
-////            case 3:
-////                if (mBookFragment == null) {
-////                    mBookFragment = BookFragment.newInstance("图书");
-////                }
-////                transaction.replace(R.id.tb, mBookFragment);
-////                break;
-//            default:
-//                break;
-//        }
-//        // 事务提交
-//        transaction.commit();
-//    }
-//
-//    @Override
-//    public void onTabUnselected(int position) {
-////        if (fragments != null) {
-////            if (position < fragments.size()) {
-////                FragmentManager fm = getSupportFragmentManager();
-////                FragmentTransaction ft = fm.beginTransaction();
-////                Fragment fragment = fragments.get(position);
-////                ft.remove(fragment);
-////                ft.commitAllowingStateLoss();
-////            }
-////        }
-//        Log.d(TAG, "onTabUnselected() called with: " + "position = [" + position + "]");
-//    }
-//
-//    @Override
-//    public void onTabReselected(int position) {
-//
-//    }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-//    public Action getIndexApiAction() {
-//        Thing object = new Thing.Builder()
-//                .setName("Main Page") // TODO: Define a title for the content shown.
-//                // TODO: Make sure this auto-generated URL is correct.
-//                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-//                .build();
-//        return new Action.Builder(Action.TYPE_VIEW)
-//                .setObject(object)
-//                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-//                .build();
-//    }
 
     @Override
     public void onStart() {
@@ -233,6 +121,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction transaction = fm.beginTransaction();
         switch (v.getId()){
             case R.id.ly_goods :
+                if(floatView.getParent()!=null)
+                {
+                    removeFloatView();
+                }
+
                 showFloatView();
                 Log.i(TAG,"<<ly_goods>>");
                 im_goods.setImageResource(R.mipmap.ic_goods_red_200dp);
@@ -273,12 +166,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tv_fetchcode.setTextColor(Color.BLACK);
                 im_help.setImageResource(R.mipmap.ic_help_red_200dp);
                 tv_help.setTextColor(Color.RED);
-                if (mHelpFragment == null) {
-                    mHelpFragment = HelpFragment.newInstance("帮助");
-                }
-                transaction.replace(R.id.tb, mHelpFragment);
-                // 事务提交
-                transaction.commit();
+                Intent intent = new Intent(MainActivity.this,OpenDoorActivity.class);
+//                intent.putExtra("MainActivity", "message");
+                startActivity(intent);
+//                if (mHelpFragment == null) {
+//                    mHelpFragment = HelpFragment.newInstance("帮助");
+//                }
+//                transaction.replace(R.id.tb, mHelpFragment);
+//                // 事务提交
+//                transaction.commit();
                 break;
             default:
                 break;
@@ -301,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             wManager.removeView(floatView);
     }
     public void showFloatView() {
+
         Log.i(TAG,"<<showFloatView>>");
         // 首先，得到WindoeManager对象：
         WindowManager wManager = (WindowManager) getApplicationContext().getSystemService( Context.WINDOW_SERVICE);

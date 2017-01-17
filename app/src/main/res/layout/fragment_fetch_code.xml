@@ -2,164 +2,218 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="40dp"
     android:layout_gravity="center"
-    android:background="@color/Gray"
+    android:background="@color/White"
     tools:context="com.example.sjs.vendingmachine.FetchCodeFragment">
 
 
-<RelativeLayout
-    android:id="@+id/keybox"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-
-    android:background="@color/White">
-
-    <EditText
-        android:id="@+id/et_fetchcode"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent" />
-    <LinearLayout
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:id="@+id/keybox"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_below="@id/et_fetchcode"
+        android:background="@color/White">
+    <LinearLayout
+        android:id="@+id/ly_et"
+        android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:paddingBottom="10dp"
+        android:background="@color/Gray"
         android:orientation="horizontal">
-        <LinearLayout
+        <EditText
+            android:id="@+id/et_fetchcode"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="2.5"
-            >
-
-            <Button
-                android:id="@+id/btn_keybox_one"
-                android:layout_height="15dp"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="1"/>
-
-            <Button
-                android:id="@+id/btn_keybox_four"
-                android:layout_height="15dp"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="4"/>
-
-            <Button
-                android:id="@+id/btn_keybox_seven"
-                android:layout_height="15dp"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="7"/>
-            <Button
-                android:id="@+id/btn_keybox_xing"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="*"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="2.5"
-            android:textSize="2dp"
-            >
-            <Button
-                android:id="@+id/btn_keybox_two"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="2"
-                android:textSize="8dp"
-               />
-            <Button
-                android:id="@+id/btn_keybox_five"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="5"/>
-            <Button
-                android:id="@+id/btn_keybox_eight"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="8"/>
-            <Button
-                android:id="@+id/btn_keybox_zero"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="0"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="2.5"
-            >
-            <Button
-                android:id="@+id/btn_keybox_three"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="3"/>
-            <Button
-                android:id="@+id/btn_keybox_six"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="6"/>
-            <Button
-            android:id="@+id/btn_keybox_nine"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_weight="0.8"
             android:background="@color/White"
-            android:text="9"/>
-            <Button
-                android:id="@+id/btn_keybox_jing"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:background="@color/White"
-                android:text="#"/>
-        </LinearLayout>
-        <LinearLayout
+            android:hint="@string/please_put_number"/>
+
+        <ImageButton
+            android:id="@+id/btn_keybox_ac"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="2.5"
-            >
-            <ImageButton
-                android:id="@+id/btn_keybox_ac"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_weight="2.5"
-                android:src="@mipmap/ic_ac_black_64dp"
-                android:background="@color/Blue"/>
-            <Button
-                android:id="@+id/btn_keybox_ce"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_weight="2.5"
-                android:background="@color/White"
-                android:text="@string/ce"
-                android:textSize="12dp"/>
-            <Button
-                android:id="@+id/btn_keybox_ok"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_weight="5"
-                android:background="@color/White"
-                android:text="@string/ok"
-                android:textSize="14dp"/>
-
-        </LinearLayout>
+            android:layout_weight="0.2"
+            android:src="@mipmap/ic_ac_red_64dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="@color/White"/>
     </LinearLayout>
-</RelativeLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_below="@id/ly_et"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/Gray"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="2.5"
+                android:background="@color/Gray"
+                android:textSize="2dp"
+                >
+
+                <Button
+                    android:id="@+id/btn_keybox_one"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.3"
+                    android:background="@drawable/touch_bg"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="1"/>
+
+                <Button
+                    android:id="@+id/btn_keybox_four"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.3"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/touch_bg"
+
+                    android:text="4"/>
+
+                <Button
+                    android:id="@+id/btn_keybox_seven"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.3"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/touch_bg"
+
+                    android:text="7"/>
+                <!--<Button-->
+                    <!--android:id="@+id/btn_keybox_xing"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:background="@color/White"-->
+                    <!--android:text="*"/>-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="2.5"
+                android:background="@color/Gray"
+                android:textSize="2dp"
+                >
+                <Button
+                    android:id="@+id/btn_keybox_two"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.3"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/touch_bg"
+                    android:text="2"
+                   />
+                <Button
+                    android:id="@+id/btn_keybox_five"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.3"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/touch_bg"
+                    android:text="5"/>
+                <Button
+                    android:id="@+id/btn_keybox_eight"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.3"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/touch_bg"
+                    android:text="8"/>
+                <!--<Button-->
+                    <!--android:id="@+id/btn_keybox_zero"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_weight="0.25"-->
+                    <!--android:background="@color/White"-->
+                    <!--android:text="0"/>-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="2.5"
+                >
+                <Button
+                    android:id="@+id/btn_keybox_three"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.3"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/touch_bg"
+                    android:text="3"/>
+                <Button
+                    android:id="@+id/btn_keybox_six"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.3"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/touch_bg"
+                    android:text="6"/>
+                <Button
+                android:id="@+id/btn_keybox_nine"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                    android:layout_weight="0.3"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/touch_bg"
+                android:text="9"/>
+                <!--<Button-->
+                    <!--android:id="@+id/btn_keybox_jing"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:background="@color/White"-->
+                    <!--android:text="#"/>-->
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="2.5"
+                >
+                <Button
+                    android:id="@+id/btn_keybox_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.2"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/touch_bg"
+                    android:text="0"/>
+
+                <!--<Button-->
+                    <!--android:id="@+id/btn_keybox_ce"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_weight="2.5"-->
+                    <!--android:background="@color/White"-->
+                    <!--android:text="@string/ce"-->
+                    <!--android:textSize="12dp"/>-->
+                <Button
+                    android:id="@+id/btn_keybox_ok"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.7"
+                    android:background="@drawable/touch_bg_accent"
+                    android:text="@string/ok"
+                    android:textSize="14dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

@@ -16,7 +16,7 @@ import android.widget.ImageButton;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FetchCodeFragment.OnFragmentInteractionListener} interface
+ * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link FetchCodeFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -83,9 +83,9 @@ public class FetchCodeFragment extends Fragment implements View.OnClickListener{
         eightBtn = (Button) view.findViewById(R.id.btn_keybox_eight);
         nineBtn  = (Button) view.findViewById(R.id.btn_keybox_nine);
         zeroBtn  = (Button) view.findViewById(R.id.btn_keybox_zero);
-        jingBtn  = (Button) view.findViewById(R.id.btn_keybox_jing);
-        xingBtn  = (Button) view.findViewById(R.id.btn_keybox_xing);
-        ceBtn    = (Button) view.findViewById(R.id.btn_keybox_ce);
+//        jingBtn  = (Button) view.findViewById(R.id.btn_keybox_jing);
+//        xingBtn  = (Button) view.findViewById(R.id.btn_keybox_xing);
+//        ceBtn    = (Button) view.findViewById(R.id.btn_keybox_ce);
         okBtn    = (Button) view.findViewById(R.id.btn_keybox_ok);
         acImBtn  = (ImageButton) view.findViewById(R.id.btn_keybox_ac);
         fetchCodeEditText= (EditText) view.findViewById(R.id.et_fetchcode);
@@ -99,9 +99,9 @@ public class FetchCodeFragment extends Fragment implements View.OnClickListener{
         sevenBtn.setOnClickListener(this);
         eightBtn.setOnClickListener(this);
         nineBtn.setOnClickListener(this);
-        xingBtn.setOnClickListener(this);
-        jingBtn.setOnClickListener(this);
-        ceBtn.setOnClickListener(this);
+//        xingBtn.setOnClickListener(this);
+//        jingBtn.setOnClickListener(this);
+//        ceBtn.setOnClickListener(this);
         okBtn.setOnClickListener(this);
         acImBtn.setOnClickListener(this);
         fetchCodeEditText.setOnClickListener(this);
@@ -180,25 +180,26 @@ public class FetchCodeFragment extends Fragment implements View.OnClickListener{
                 stringFetchCode.append(9);
                 fetchCodeEditText.setText(stringFetchCode);
                 break;
-            case R.id.btn_keybox_jing:
-                String s1 = "#";
-                stringFetchCode.append(s1);
-                fetchCodeEditText.setText(stringFetchCode);
-                break;
-            case R.id.btn_keybox_xing:
-                String s2 = "*";
-                stringFetchCode.append(s2);
-                fetchCodeEditText.setText(stringFetchCode);
-                break;
+
             case R.id.btn_keybox_ac:
                 stringFetchCode = new StringBuffer("");
                 fetchCodeEditText.setText(stringFetchCode);
                 break;
-            case R.id.btn_keybox_ce:
+//            case R.id.btn_keybox_jing:
+//                String s1 = "#";
+//                stringFetchCode.append(s1);
+//                fetchCodeEditText.setText(stringFetchCode);
+//                break;
+//            case R.id.btn_keybox_xing:
+//                String s2 = "*";
+//                stringFetchCode.append(s2);
+//                fetchCodeEditText.setText(stringFetchCode);
+//                break;
+//            case R.id.btn_keybox_ce:
 //                InputConnection ic = getCurrentInputConnection();
 //                ic.deleteSurroundingText(4, 0);
 //                fetchCodeEditText.setText(stringFetchCode);
-                break;
+//                break;
             case R.id.btn_keybox_ok:
              //向服务器提交数据
                 break;

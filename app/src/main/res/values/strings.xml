@@ -7,6 +7,18 @@
     <string name="fetchcode">付款码</string>
     <string name="help">帮助</string>
     <string name="alreadypay_floatview">已投入： 0  元</string>
+    <string name="nameandeprice">大虾：100元</string>
     <string name="ce">清除</string>
     <string name="ok">取货</string>
+    <string name="please_put_number">请输入取货码</string>
+    <string name="testname">极品龙虾</string>
+    <string name="testprice">120元</string>
+    <string name="back">返回</string>
+    <string name="wxpay">微信支付</string>
+    <string name="zfbpay">支付宝支付</string>
+    <string name="yktpay">一卡通支付</string>
+    <string name="xjpay">现金支付</string>
+    <string name="jdpay">京东钱包</string>
+    <string name="ylpay">银联支付</string>
+    <string name="tiamer">倒计时</string>
 </resources>
