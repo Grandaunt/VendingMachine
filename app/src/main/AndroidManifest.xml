@@ -7,8 +7,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 在sdcard中创建/删除文件的权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".Application.MyApplication"
@@ -25,7 +25,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".PayActivity" />
-        <activity android:name=".OpenDoorActivity"></activity>
+        <activity android:name=".OpenDoorActivity" />
+        <activity android:name=".ReplenishActivity" />
+        <activity android:name=".GoodsManagerActivity" />
+        <activity android:name=".AisleManagerActivity" />
+        <activity android:name=".MachineManagerActivity" />
+        <activity android:name=".DoorManagerActivity"></activity>
     </application>
 
 </manifest>

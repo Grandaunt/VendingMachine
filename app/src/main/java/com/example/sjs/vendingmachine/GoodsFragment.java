@@ -19,9 +19,19 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.sjs.vendingmachine.Adapter.RecyclerAdapter;
+import com.example.sjs.vendingmachine.DB.Goods;
+import com.example.sjs.vendingmachine.DB.GoodsRepo;
+import com.example.sjs.vendingmachine.Http.GoodsBean;
 import com.example.sjs.vendingmachine.Manager.MyCustomLayoutManager;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -35,11 +45,14 @@ import java.util.List;
  */
 public class GoodsFragment extends Fragment {
     public static String TAG="GoodsFragment";
+    private String URL="http://172.16.11.124:8080/MVNFHM//appInterface/getGoods.do";
 
     private RecyclerView Goos_RecyclerView;
 //    private RecyclerView.Adapter mAdapter;
     private LinearLayoutManager mLayoutManager;
-    private List<String> mDatas;
+//    private List<String> mDatas;
+    private List<GoodsBean> GoodsBeanList;
+    private ArrayList<HashMap<String, String>> showGoodsList;
     private RecyclerAdapter mAdapter;
     private ImageButton btn_up,btn_down;
     // TODO: Rename parameter arguments, choose names that match
@@ -67,20 +80,12 @@ public class GoodsFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static GoodsFragment newInstance(String param1) {
         GoodsFragment fragment = new GoodsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -88,13 +93,17 @@ public class GoodsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_goods, container, false);
-        Bundle bundle = getArguments();
-        String agrs1 = bundle.getString("agrs1");
+        x.view().inject(getActivity());
+//        context=this;
+        //初始化showGoodsList并获取showGoodsList数据
+        showGoodsList = new  ArrayList<HashMap<String, String>> ();
+        GoodsRepo repo = new GoodsRepo(getActivity());
+        showGoodsList = repo.showGoodsList();
+        Log.i(TAG,"showGoodsList.size="+showGoodsList.size());
 
+        initData();
 
-
-//        initData();
-        //开始设置RecyclerView
+                //开始设置RecyclerView
         Goos_RecyclerView=(RecyclerView)view.findViewById(R.id.recyclerview_goods);
         //设置固定大小
         Goos_RecyclerView.setHasFixedSize(true);
@@ -110,9 +119,8 @@ public class GoodsFragment extends Fragment {
 //        recyclerView_one.setLayoutManager(new StaggeredGridLayoutManager(4,
 //                StaggeredGridLayoutManager.VERTICAL));
         //创建适配器，并且设置
-        mAdapter = new RecyclerAdapter(getActivity());
-//        Goos_RecyclerView.setAdapter(mAdapter);
-        Goos_RecyclerView.setAdapter(mAdapter = new RecyclerAdapter(getActivity()));
+        mAdapter = new RecyclerAdapter(getActivity(),showGoodsList);
+        Goos_RecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickLitener(new RecyclerAdapter.OnItemClickLitener()
         {
 
@@ -122,63 +130,105 @@ public class GoodsFragment extends Fragment {
                 Intent intent = new Intent(getActivity(),PayActivity.class);
 //                intent.putExtra("MainActivity", "message");
                 startActivity(intent);
-
 //                然后再新的Activity中：
 //                String str = getIntent().getExtras().getString("MainActivity");
-
                 Toast.makeText(getActivity(), position + " click",
                         Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position)
-            {
-                Toast.makeText(getActivity(), position + " long click",
-                        Toast.LENGTH_SHORT).show();
-                mAdapter.removeData(position);
-            }
-        });
-
-        //上下翻页
-        btn_up = (ImageButton)view.findViewById(R.id.im_goods_up);
-        btn_down = (ImageButton)view.findViewById(R.id.im_goods_down);
-        btn_up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-//                Goos_RecyclerView.setVerticalScrollbarPosition(Goos_RecyclerView.getNextFocusDownId()+250);
-//                mLayoutManager = (LinearLayoutManager) Goos_RecyclerView.getLayoutManager();
-//                mLayoutManager.scrollToPositionWithOffset(10, 0);
-//                Goos_RecyclerView.scrollToPosition(Goos_RecyclerView.getVerticalScrollbarPosition()+250);
-//                Goos_RecyclerView.smoothScrollToPosition(10);
-                Log.i(TAG,"Goos_RecyclerView.scrollToPosition下滑");
-                Log.i(TAG,"Goos_RecyclerView.scrollToPosition下滑");
-                Log.i(TAG,"Goos_RecyclerView.scrollToPosition下滑");
-                Log.i(TAG,"Goos_RecyclerView.scrollToPosition下滑");
-                Log.i(TAG,"Goos_RecyclerView.scrollToPosition下滑");
-                Log.i(TAG,"Goos_RecyclerView.scrollToPosition下滑");
-            }
-        });
-        btn_down.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Goos_RecyclerView.scrollToPosition(Goos_RecyclerView.getVerticalScrollbarPosition()+25);
             }
         });
         return view;
 
-//        return inflater.inflate(R.layout.fragment_goods, container, false);
     }
 
-//    protected void initData()
-//    {
-//        mDatas = new ArrayList<String>();
-//        for (int i = 'A'; i < 'z'; i++)
-//        {
-//            mDatas.add("" + (char) i);
-//        }
-//    }
+    //初始化数据
+    private void initData()
+    {
+        RequestParams params = new RequestParams(URL);
+       //根据当前请求方式添加参数位置
+        params.addParameter("userAccount", "11000");
+        Log.i(TAG,"params="+params);
+        x.http().post(params, new Callback.CacheCallback<String>() {
+               @Override
+                    public void onSuccess(String result) {
+                   Log.i(TAG, "result:" + result);
+
+                   if(result.equals("01")||result == "01")
+                   {
+                       Toast.makeText(getActivity(),"无数据",Toast.LENGTH_LONG).show();
+
+                   }
+                   else {
+                       Gson gson = new Gson();
+                       GoodsBeanList = gson.fromJson(result, new TypeToken<List<GoodsBean>>() {
+                       }.getType());
+
+//                    CIFPersInfBean cifPerBean = gson.fromJson(result, CIFPersInfBean.class);
+                       if (GoodsBeanList.size() > 0) {
+                           for (int i = 0; i < GoodsBeanList.size(); i++) {
+                               GoodsBean cifPerBean = GoodsBeanList.get(i);
+                               Goods goods = new Goods();
+                               goods.goodsId = cifPerBean.getGOODS_ID();
+                               goods.goodsNum = cifPerBean.getGOODSNUM();
+                               goods.goodsName = cifPerBean.getGOODSNAME();
+                               goods.goodsPrice = cifPerBean.getGOODSPRICE();
+                               goods.gooodsInfo = cifPerBean.getGOODSINFO();
+
+                               goods.goodsImage = cifPerBean.getGOODSIMAGE();
+                               goods.goodsType = cifPerBean.getGOODSTYPE();
+                               goods.goodsStatus = cifPerBean.getGOODSSTATUS();
+                               goods.goodsNumber = cifPerBean.getGOODSNUMBER();
+                               goods.goodsCost = cifPerBean.getGOODSCOST();
+
+                               goods.goodsTemperature = cifPerBean.getGOODSTEMPERATURE();
+                               goods.goodsLight = cifPerBean.getGOODSLIGHT();
+                               goods.goodsLife = cifPerBean.getGOODSLIFE();
+
+                               GoodsRepo repo = new GoodsRepo(getActivity());
+                               Log.i(TAG, "Goods表:cifPerBean.getGoodsId()" + cifPerBean.getGOODSNUM());
+                               if (repo.getGoodsNum(cifPerBean.getGOODSNUM())) {
+                                   repo.update(goods);
+                                   Log.i(TAG, "goods表更新:" + cifPerBean.getGOODSNAME());
+                               } else {
+                                   repo.insert(goods);
+                                   Log.i(TAG, "goods表插入:" + cifPerBean.getGOODSNAME());
+                               }
+
+
+                           }
+                       }
+                   }
+                    }
+
+                    @Override
+                    public void onError(Throwable ex, boolean isOnCallback) {
+                        Log.i(TAG,"onError="+ex);
+                    }
+
+                    @Override
+                    public void onCancelled(CancelledException cex) {
+                        Log.i(TAG,"onCancelled="+cex);
+                    }
+
+                    @Override
+                    public void onFinished() {
+                        showGoodsList = new  ArrayList<HashMap<String, String>> ();
+                        GoodsRepo repo = new GoodsRepo(getActivity());
+                        showGoodsList = repo.showGoodsList();
+                        Log.i(TAG,"showGoodsList.size="+showGoodsList.size());
+                        //创建适配器，并且设置
+                        mAdapter = new RecyclerAdapter(getActivity(),showGoodsList);
+                        Goos_RecyclerView.setAdapter(mAdapter);
+                        Log.i(TAG,"onFinished");
+                    }
+
+                    @Override
+                    public boolean onCache(String result) {
+                        Log.i(TAG,"onCache"+result);
+                        return false;
+                    }
+        });
+
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

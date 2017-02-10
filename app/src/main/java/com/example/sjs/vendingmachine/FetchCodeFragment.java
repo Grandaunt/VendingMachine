@@ -1,9 +1,12 @@
 package com.example.sjs.vendingmachine;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,10 @@ import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.example.sjs.vendingmachine.Manager.openDoorManager;
+import com.example.sjs.vendingmachine.SerialUtil.SerialPortActivity;
+import com.example.sjs.vendingmachine.SerialUtil.SerialPortFragment;
 
 
 /**
@@ -21,10 +28,11 @@ import android.widget.ImageButton;
  * Use the {@link FetchCodeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FetchCodeFragment extends Fragment implements View.OnClickListener{
+public class FetchCodeFragment extends SerialPortFragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
+    private static final String TAG = "FetchCodeFragment";
     private Button zeroBtn,oneBtn,twoBtn,threeBtn,fourBtn,fiveBtn,sixBtn,sevenBtn,eightBtn,nineBtn,xingBtn,jingBtn,ceBtn,okBtn;
     private ImageButton acImBtn;
     private EditText fetchCodeEditText;
@@ -65,6 +73,11 @@ public class FetchCodeFragment extends Fragment implements View.OnClickListener{
             mParam1 = getArguments().getString(ARG_PARAM1);
 //            mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+    @Override
+    protected void onDataReceived(byte[] buffer, int size) {
+
     }
 
     @Override
@@ -201,7 +214,118 @@ public class FetchCodeFragment extends Fragment implements View.OnClickListener{
 //                fetchCodeEditText.setText(stringFetchCode);
 //                break;
             case R.id.btn_keybox_ok:
-             //向服务器提交数据
+                String okStr = stringFetchCode.toString(); //StringBuffer转换为String
+                Log.i(TAG,"stringFetchCode="+stringFetchCode+stringFetchCode.equals("11000"));
+             //向服务器提交数
+                for(int i=0;i<32;i++){
+                    if(okStr.equals("10"+i)){
+                       send(i);
+                    }
+                    else  if(okStr.equals("11000")){
+                        Intent intent = new Intent(getActivity(),ReplenishActivity.class);
+//                intent.putExtra("MainActivity", "message");
+                        startActivity(intent);
+                    }
+                }
+//                      if(stringFetchCode.equals("1001")){
+//                    OpenDoorActivity. send(0);
+//                }
+//               else   if(stringFetchCode.equals("1002")){
+//                    OpenDoorActivity. send(1);
+//                }
+//                else   if(stringFetchCode.equals("1003")){
+//                    OpenDoorActivity. send(2);
+//                }
+//                else   if(stringFetchCode.equals("1004")){
+//                    OpenDoorActivity. send(3);
+//                }
+//                else   if(stringFetchCode.equals("1005")){
+//                    OpenDoorActivity. send(4);
+//                }
+//                else   if(stringFetchCode.equals("1006")){
+//                    OpenDoorActivity. send(5);
+//                }
+//                else   if(stringFetchCode.equals("1007")){
+//                    OpenDoorActivity. send(6);
+//                }
+//                else   if(stringFetchCode.equals("1008")){
+//                    OpenDoorActivity. send(7);
+//                }
+//                else   if(stringFetchCode.equals("1009")){
+//                    OpenDoorActivity. send(8);
+//                }
+//                else   if(stringFetchCode.equals("1010")){
+//                    OpenDoorActivity. send(9);
+//                }
+//                else   if(stringFetchCode.equals("1011")){
+//                    OpenDoorActivity. send(10);
+//                }
+//                else   if(stringFetchCode.equals("1012")){
+//                    OpenDoorActivity. send(11);
+//                }
+//                else   if(stringFetchCode.equals("1013")){
+//                    OpenDoorActivity. send(12);
+//                }
+//                else   if(stringFetchCode.equals("1014")){
+//                    OpenDoorActivity. send(13);
+//                }
+//                else   if(stringFetchCode.equals("1015")){
+//                    OpenDoorActivity. send(14);
+//                }
+//                else   if(stringFetchCode.equals("1016")){
+//                    OpenDoorActivity. send(15);
+//                }
+//                else   if(stringFetchCode.equals("1017")){
+//                    OpenDoorActivity. send(16);
+//                }
+//                else   if(stringFetchCode.equals("1018")){
+//                    OpenDoorActivity. send(17);
+//                }
+//                else   if(stringFetchCode.equals("1019")){
+//                    OpenDoorActivity. send(18);
+//                }
+//                else   if(stringFetchCode.equals("1020")){
+//                    OpenDoorActivity. send(19);
+//                }
+//                else   if(stringFetchCode.equals("1021")){
+//                    OpenDoorActivity. send(20);
+//                }
+//                else   if(stringFetchCode.equals("1022")){
+//                    OpenDoorActivity. send(21);
+//                }
+//                else   if(stringFetchCode.equals("1023")){
+//                    OpenDoorActivity. send(22);
+//                }
+//                else   if(stringFetchCode.equals("1024")){
+//                    OpenDoorActivity. send(23);
+//                }
+//                else   if(stringFetchCode.equals("1025")){
+//                    OpenDoorActivity. send(24);
+//                }
+//                else   if(stringFetchCode.equals("1026")){
+//                    OpenDoorActivity. send(25);
+//                }
+//                else   if(stringFetchCode.equals("1027")){
+//                   send(26);
+//                }
+//                else   if(stringFetchCode.equals("1028")){
+//                   send(27);
+//                }
+//                else   if(stringFetchCode.equals("1029")){
+//                   send(28);
+//                }
+//                else   if(stringFetchCode.equals("1030")){
+//                    send(29);
+//                }
+//                else   if(stringFetchCode.equals("1031")){
+//                    send(30);
+//                }
+//                else   if(stringFetchCode.equals("1032")){
+//                    send(31);
+//                }
+
+
+
                 break;
                 default:
                     break;
@@ -211,7 +335,22 @@ public class FetchCodeFragment extends Fragment implements View.OnClickListener{
 
     }
 
+    public void send(int open_num) {
 
+//        String text = mEditTextEmission.getText().toString();
+//        if (TextUtils.isEmpty(open_num)) {
+//            return;
+//        }
+        Log.i(TAG,open_num+"send已发送open_num");
+        byte [] HxStr = openDoorManager.hex2byte(openDoorManager.open_numarr[open_num]);
+        Message message = Message.obtain();
+//        message.obj = open_num.getBytes();
+        message.obj =  HxStr;
+        Log.i(TAG,HxStr+"send已发送");
+        sendingHandler.sendMessage(message);
+
+
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

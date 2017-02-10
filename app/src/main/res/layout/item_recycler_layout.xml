@@ -13,14 +13,62 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:src="@mipmap/testimage"
-        android:id="@+id/imageView"
+        android:id="@+id/im_item_goods"
         />
-    <TextView
-        android:id="@+id/tv_goods_nameaneprice"
+    <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:textSize="16dp"
-        android:textColor="@color/colorAccent"
-        android:text="@string/nameandeprice"/>
+        >
+    <TextView
+        android:id="@+id/tv_goods_name"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="26dp"
+        android:textColor="@color/Black"
+        android:text="大虾"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="24dp"
+        android:textColor="@color/Black"
+        android:text="x"/>
+        <TextView
+            android:id="@+id/tv_goods_number"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="24dp"
+            android:textColor="@color/Black"
+            android:text="2"/>
+        </LinearLayout>
+   <LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    >
+       <TextView
+           android:layout_height="wrap_content"
+           android:layout_width="wrap_content"
+           android:gravity="center"
+           android:textSize="26dp"
+           android:textColor="@color/Gray"
+           android:text="零售价"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:textSize="26dp"
+        android:textColor="@color/Red"
+        android:text="￥"/>
+       <TextView
+           android:id="@+id/tv_goods_sumPrice"
+           android:layout_height="wrap_content"
+           android:layout_width="wrap_content"
+           android:gravity="center"
+           android:textSize="26dp"
+           android:textColor="@color/Red"
+           android:text="6.00"/>
+       </LinearLayout>
 </LinearLayout>

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tv_goods,tv_fetchcode,tv_help;
     private LinearLayout ly_goods,ly_fetchcode,ly_help;
     private ImageView im_goods,im_fetchcode,im_help;
-    private TextView floatView;
+//    private TextView floatView;
 
     private GoogleApiClient client;
 //    private BookFragment mBookFragment;
@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.i(TAG,"<<onCreate>>");
-          floatView  = new FloatView(getApplicationContext());
-          floatView.setText("已投币： 0 元");
-          floatView.setTextColor(Color.WHITE);
-          floatView.setBackgroundColor(Color.parseColor("#990022"));
-          floatView.setGravity(Gravity.CENTER);
+//          floatView  = new FloatView(getApplicationContext());
+//          floatView.setText("已投币： 0 元");
+//          floatView.setTextColor(Color.WHITE);
+//          floatView.setBackgroundColor(Color.parseColor("#990022"));
+//          floatView.setGravity(Gravity.CENTER);
 //          floatView.setTextSize(10);
 
           tv_goods = (TextView)findViewById(R.id.text_goods);
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // mFetchCodeFragment = FetchCodeFragment.newInstance("提取码");
         transaction.replace(R.id.tb, mGoodsFragment);
         transaction.commit();
-        showFloatView();
+//        showFloatView();
     }
 
 
@@ -121,12 +121,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction transaction = fm.beginTransaction();
         switch (v.getId()){
             case R.id.ly_goods :
-                if(floatView.getParent()!=null)
-                {
-                    removeFloatView();
-                }
+//                if(floatView.getParent()!=null)
+//                {
+//                    removeFloatView();
+//                }
 
-                showFloatView();
+//                showFloatView();
                 Log.i(TAG,"<<ly_goods>>");
                 im_goods.setImageResource(R.mipmap.ic_goods_red_200dp);
                 tv_goods.setTextColor(Color.RED);
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 transaction.commit();
                 break;
             case R.id.ly_fetchcode :
-                removeFloatView();
+//                removeFloatView();
                 Log.i(TAG,"<<ly_fetchcode>>");
                 im_goods.setImageResource(R.mipmap.ic_goods_black_200dp);
                 tv_goods.setTextColor(Color.BLACK);
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 transaction.commit();
                 break;
             case R.id.ly_help :
-                removeFloatView();
+//                removeFloatView();
                 Log.i(TAG,"<<ly_help>>");
                 im_goods.setImageResource(R.mipmap.ic_goods_black_200dp);
                 tv_goods.setTextColor(Color.BLACK);
@@ -166,15 +166,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tv_fetchcode.setTextColor(Color.BLACK);
                 im_help.setImageResource(R.mipmap.ic_help_red_200dp);
                 tv_help.setTextColor(Color.RED);
-                Intent intent = new Intent(MainActivity.this,OpenDoorActivity.class);
-//                intent.putExtra("MainActivity", "message");
-                startActivity(intent);
-//                if (mHelpFragment == null) {
-//                    mHelpFragment = HelpFragment.newInstance("帮助");
-//                }
-//                transaction.replace(R.id.tb, mHelpFragment);
-//                // 事务提交
-//                transaction.commit();
+//                Intent intent = new Intent(MainActivity.this,OpenDoorActivity.class);
+////                intent.putExtra("MainActivity", "message");
+//                startActivity(intent);
+                if (mHelpFragment == null) {
+                    mHelpFragment = HelpFragment.newInstance("帮助");
+                }
+                transaction.replace(R.id.tb, mHelpFragment);
+                // 事务提交
+                transaction.commit();
                 break;
             default:
                 break;
@@ -189,46 +189,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * 悬浮按钮
      */
-    public void removeFloatView() {
-        Log.i(TAG,"<<removeFloatView>>");
-        WindowManager wManager = (WindowManager) getApplicationContext().getSystemService( Context.WINDOW_SERVICE);
-//        如果要将其从WindowManager中移除，则可以执行以下语句：
-        if(floatView.getParent()!=null)
-            wManager.removeView(floatView);
-    }
-    public void showFloatView() {
-
-        Log.i(TAG,"<<showFloatView>>");
-        // 首先，得到WindoeManager对象：
-        WindowManager wManager = (WindowManager) getApplicationContext().getSystemService( Context.WINDOW_SERVICE);
-        //其次，得到WindowManager.LayoutParams对象，为后续设置相关参数做准备：
-         WindowManager.LayoutParams wmParams=new WindowManager.LayoutParams();
-        // 接着，设置相关的窗口布局参数，要实现悬浮窗口效果，主要需要设置的参数有：
-        wmParams.type = WindowManager.LayoutParams.TYPE_PHONE; // 设置window type
-        wmParams.format = PixelFormat.RGBA_8888; // 设置图片格式，效果为背景透明
-        /*
-        * 下面的flags属性的效果形同“锁定”。 悬浮窗不可触摸，不接受任何事件,同时不影响后面的事件响应。
-        */
-        wmParams.flags= WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
-        wmParams.gravity = Gravity.RIGHT| Gravity.TOP; // 调整悬浮窗口至右上 CENTER_VERTICAL是中间
-        // 以屏幕左上角为原点，设置x、y初始值
-        wmParams.x = 0;
-        wmParams.y = 0;
-
-// 设置悬浮窗口长宽数据
-        wmParams.width = 170;
-        wmParams.height = 170;
-//        wmParams.width = WindowManager.LayoutParams.WRAP_CONTENT;;
-//        wmParams.height =WindowManager.LayoutParams.WRAP_CONTENT;;
-
-        //  然后，就可以将需要加到悬浮窗口中的View加入到窗口中了：
-        // if(floatView.getParent==null)如果view没有被加入到某个父组件中，则加入WindowManager中
-            wManager.addView(floatView,wmParams);
-        //  其中，view为需要放到悬浮窗口中的视图组件。
-
-
-    }
+//    public void removeFloatView() {
+//        Log.i(TAG,"<<removeFloatView>>");
+//        WindowManager wManager = (WindowManager) getApplicationContext().getSystemService( Context.WINDOW_SERVICE);
+////        如果要将其从WindowManager中移除，则可以执行以下语句：
+////        if(floatView.getParent()!=null)
+////            wManager.removeView(floatView);
+////    }
+//    public void showFloatView() {
+//
+//        Log.i(TAG,"<<showFloatView>>");
+//        // 首先，得到WindoeManager对象：
+//        WindowManager wManager = (WindowManager) getApplicationContext().getSystemService( Context.WINDOW_SERVICE);
+//        //其次，得到WindowManager.LayoutParams对象，为后续设置相关参数做准备：
+//         WindowManager.LayoutParams wmParams=new WindowManager.LayoutParams();
+//        // 接着，设置相关的窗口布局参数，要实现悬浮窗口效果，主要需要设置的参数有：
+//        wmParams.type = WindowManager.LayoutParams.TYPE_PHONE; // 设置window type
+//        wmParams.format = PixelFormat.RGBA_8888; // 设置图片格式，效果为背景透明
+//        /*
+//        * 下面的flags属性的效果形同“锁定”。 悬浮窗不可触摸，不接受任何事件,同时不影响后面的事件响应。
+//        */
+//        wmParams.flags= WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
+//                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+//        wmParams.gravity = Gravity.RIGHT| Gravity.TOP; // 调整悬浮窗口至右上 CENTER_VERTICAL是中间
+//        // 以屏幕左上角为原点，设置x、y初始值
+//        wmParams.x = 0;
+//        wmParams.y = 0;
+//
+//// 设置悬浮窗口长宽数据
+//        wmParams.width = 170;
+//        wmParams.height = 170;
+////        wmParams.width = WindowManager.LayoutParams.WRAP_CONTENT;;
+////        wmParams.height =WindowManager.LayoutParams.WRAP_CONTENT;;
+//
+//        //  然后，就可以将需要加到悬浮窗口中的View加入到窗口中了：
+//        // if(floatView.getParent==null)如果view没有被加入到某个父组件中，则加入WindowManager中
+//            wManager.addView(floatView,wmParams);
+//        //  其中，view为需要放到悬浮窗口中的视图组件。
+//
+//
+//    }
     @Override
     protected void onPostResume() {
         Log.i(TAG,"<<onPostResume>>");

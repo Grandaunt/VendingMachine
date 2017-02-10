@@ -63,7 +63,7 @@ public class OpenDoorActivity extends SerialPortActivity implements View.OnClick
      *    7.自定义数据 格子的地址
      *    8.9.CRC6（2）校验位
      */
-    public String[] open_numarr = {
+    public static String[] open_numarr = {
             "C7 07 00 52 00 05 01 D0 97",
             "C7 07 00 52 00 05 02 E0 F4",
             "C7 07 00 52 00 05 03 F0 D5",
@@ -100,30 +100,31 @@ public class OpenDoorActivity extends SerialPortActivity implements View.OnClick
             "C7 07 00 52 00 05 1F 23 68",
             "C7 07 00 52 00 05 20 E4 D4"//32
     };
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_door);
-//        mEditTextEmission = (EditText) findViewById(R.id.editTextEmission);
-        open_one = (Button)findViewById(R.id.open_one);
-        open_two = (Button)findViewById(R.id.open_two);
-        open_three = (Button)findViewById(R.id.open_three);
-        open_four = (Button)findViewById(R.id.open_four);
-        open_five = (Button)findViewById(R.id.open_five);
-        open_six = (Button)findViewById(R.id.open_six);
-        open_seven = (Button)findViewById(R.id.open_seven);
-        open_one.setOnClickListener(this);
-        open_two.setOnClickListener(this);
-        open_three.setOnClickListener(this);
-        open_four.setOnClickListener(this);
-        open_five.setOnClickListener(this);
-        open_six.setOnClickListener(this);
-        open_seven.setOnClickListener(this);
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        setContentView(R.layout.activity_open_door);
+////        mEditTextEmission = (EditText) findViewById(R.id.editTextEmission);
+//        open_one = (Button)findViewById(R.id.open_one);
+//        open_two = (Button)findViewById(R.id.open_two);
+//        open_three = (Button)findViewById(R.id.open_three);
+//        open_four = (Button)findViewById(R.id.open_four);
+//        open_five = (Button)findViewById(R.id.open_five);
+//        open_six = (Button)findViewById(R.id.open_six);
+//        open_seven = (Button)findViewById(R.id.open_seven);
+//        open_one.setOnClickListener(this);
+//        open_two.setOnClickListener(this);
+//        open_three.setOnClickListener(this);
+//        open_four.setOnClickListener(this);
+//        open_five.setOnClickListener(this);
+//        open_six.setOnClickListener(this);
+//        open_seven.setOnClickListener(this);
+//
+//
+//    }
 
-
-    }
-
-    public void send(int open_num) {
+    public  void send(int open_num) {
 
 //        String text = mEditTextEmission.getText().toString();
 //        if (TextUtils.isEmpty(open_num)) {
@@ -140,23 +141,23 @@ public class OpenDoorActivity extends SerialPortActivity implements View.OnClick
 
     }
 
-    @Override
-    protected void onDataReceived(final byte[] buffer, final int size) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-
-                Toast.makeText(mApplication, "收到消息：" + new String(buffer) + "  size = " + size, Toast.LENGTH_SHORT).show();
-                Log.i(TAG,"收到消息：buffer" + buffer + "  size = " + size);
-                Log.i(TAG,"收到消息：buffer" + new String(buffer) + "  size = " + size);
-                String returnStr = bytesToHexString(buffer);
-                Log.i(TAG,"收到消息：数组转换成十六进制字符串" + returnStr + "  size = " + size);
-                String returnStr2 = bytes2HexString(buffer);
-                Log.i(TAG,"收到消息：bytes2HexString" + returnStr2 + "  size = " + size);
-
-            }
-        });
-    }
+//    @Override
+//    protected void onDataReceived(final byte[] buffer, final int size) {
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                Toast.makeText(mApplication, "收到消息：" + new String(buffer) + "  size = " + size, Toast.LENGTH_SHORT).show();
+//                Log.i(TAG,"收到消息：buffer" + buffer + "  size = " + size);
+//                Log.i(TAG,"收到消息：buffer" + new String(buffer) + "  size = " + size);
+//                String returnStr = bytesToHexString(buffer);
+//                Log.i(TAG,"收到消息：数组转换成十六进制字符串" + returnStr + "  size = " + size);
+//                String returnStr2 = bytes2HexString(buffer);
+//                Log.i(TAG,"收到消息：bytes2HexString" + returnStr2 + "  size = " + size);
+//
+//            }
+//        });
+//    }
 
     @Override
     public void onClick(View view) {
@@ -251,6 +252,11 @@ public class OpenDoorActivity extends SerialPortActivity implements View.OnClick
             result.append(hex.toUpperCase());
         }
         return result.toString();
+    }
+
+    @Override
+    protected void onDataReceived(byte[] buffer, int size) {
+
     }
 }
 

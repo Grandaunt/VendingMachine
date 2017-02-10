@@ -2,12 +2,21 @@ package com.example.sjs.vendingmachine.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.sjs.vendingmachine.R;
 
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,16 +25,19 @@ import java.util.List;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+    private  static  String TAG="RecyclerAdapter";
     private LayoutInflater mInflater;
-    private String[] mTitles = null;
+    private ArrayList<HashMap<String, String>> mGoodsList;
+    private String imageUrl;
+    private float sumPrice;
+    private int number;
+    public   DecimalFormat decimalFormat;
 
-    public RecyclerAdapter(Context context) {
+    public RecyclerAdapter(Context context,ArrayList<HashMap<String, String>> showGoodsList) {
         this.mInflater = LayoutInflater.from(context);
-        this.mTitles = new String[20];
-        for (int i = 0; i < 20; i++) {
-            int index = i + 1;
-            mTitles[i] = "item" + index;
-        }
+        this.mGoodsList = showGoodsList;
+
+
     }
 
     /**
@@ -58,6 +70,31 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, int position) {
 //        holder.item_tv.setText(mTitles[position]);
 //        holder.tv.setText(mDatas.get(position));
+//        holder.imGoods.setImageResource(mTitles[position]);
+         decimalFormat=new DecimalFormat(".00");
+        //构造方法的字符格式这里如果小数不足2位,会以0补足.
+        imageUrl = "http://172.16.11.124:8080/MVNFHM/uploadFiles/uploadImgs/20170209/d9205a29278644fdbe6b37421bab17bb.png";
+        number = Integer.parseInt(mGoodsList.get(position).get("goodsNumber"));
+        sumPrice = Float.parseFloat(mGoodsList.get(position).get("goodsPrice"));
+        Log.i(TAG,"goodsPrice*number="+sumPrice+"*"+number+"="+sumPrice*number);
+        sumPrice = sumPrice*number;
+        ImageOptions options = new ImageOptions.Builder()
+                //设置加载过程中的图片
+                .setLoadingDrawableId(R.mipmap.testimage)
+//设置加载失败后的图片
+                .setFailureDrawableId(R.mipmap.testimage)
+                //设置圆形
+                .setCircular(false)
+                //某些手机拍照时图片自动旋转，设置图片是否自动旋转为正
+                .setAutoRotate(true)
+                //等比例缩放居中显示
+                .setImageScaleType(ImageView.ScaleType.FIT_XY)
+                .build();
+//        x.image().bind(imageView, iconUrl,imageOptions);
+        x.image().bind(holder.imGoods, imageUrl, options);
+        holder.tvGoodsName.setText(mGoodsList.get(position).get("goodsName"));
+        holder.tvGoodsNumber.setText(mGoodsList.get(position).get("goodsNumber"));
+        holder.tvGoodsSumPrice.setText(decimalFormat.format(sumPrice));
 
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null)
@@ -69,6 +106,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 {
                     int pos = holder.getLayoutPosition();
                     mOnItemClickLitener.onItemClick(holder.itemView, pos);
+
                 }
             });
 
@@ -87,16 +125,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return mTitles.length;
+//        return mTitles.length;
+        return mGoodsList.size();
     }
 
     //自定义的ViewHolder，持有每个Item的的所有界面元素
     public static class ViewHolder extends RecyclerView.ViewHolder {
-//        public TextView item_tv;
+        public ImageView imGoods ;
+        public TextView tvGoodsName,tvGoodsNumber,tvGoodsSumPrice;
 
         public ViewHolder(View view) {
             super(view);
-//            item_tv = (TextView) view.findViewById(R.id.item_tv);
+            imGoods = (ImageView)view.findViewById(R.id.im_item_goods);
+            tvGoodsName = (TextView) view.findViewById(R.id.tv_goods_name);
+            tvGoodsNumber = (TextView) view.findViewById(R.id.tv_goods_number);
+            tvGoodsSumPrice = (TextView) view.findViewById(R.id.tv_goods_sumPrice);
         }
     }
 
@@ -113,7 +156,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public interface OnItemClickLitener
     {
         void onItemClick(View view, int position);
-        void onItemLongClick(View view, int position);
+//        void onItemLongClick(View view, int position);
     }
 
     private OnItemClickLitener mOnItemClickLitener;

@@ -1,5 +1,3 @@
-package com.example.sjs.vendingmachine.Http;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +27,7 @@ import java.io.File;
 
 @ContentView(R.layout.activity_http)
 class httptest extends AppCompatActivity {
-    //    private Context context;
+    // private Context context;
     @ViewInject(R.id.get)
     private Button GET;
 
@@ -168,6 +166,7 @@ class httptest extends AppCompatActivity {
         params.addParameter("password", "2313");
 
         //        params.addHeader("head","xs");
+
         x.http().post(params, new Callback.CacheCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -397,6 +396,4 @@ class httptest extends AppCompatActivity {
                 });
         cancelable.cancel();
     }
-
-
 }
