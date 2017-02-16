@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     tools:context="com.example.sjs.vendingmachine.GoodsFragment">
     <!--<TextView-->
@@ -9,6 +10,7 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:text="@String/alreadypay_floatview"/>-->
+
     <LinearLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -23,28 +25,7 @@
         android:layout_weight="9.5"
         >
     </android.support.v7.widget.RecyclerView>
-<LinearLayout
-    android:layout_height="match_parent"
-    android:layout_width="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:layout_weight="0.5">
-    <ImageButton
-        android:id="@+id/im_goods_up"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:src="@mipmap/ic_up_red_64dp"
-        android:background="@color/White"
-        android:layout_marginBottom="15dp"/>
 
-    <ImageButton
-        android:id="@+id/im_goods_down"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:src="@mipmap/ic_down_red_64dp"
-        android:background="@color/White"
-        android:layout_marginTop="15dp"/>
-    </LinearLayout>
 
 </LinearLayout>
 </FrameLayout>

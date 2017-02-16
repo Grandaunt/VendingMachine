@@ -2,10 +2,12 @@ package com.example.sjs.vendingmachine;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Message;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.sjs.vendingmachine.Manager.openDoorManager;
 import com.example.sjs.vendingmachine.SerialUtil.SerialPortActivity;
@@ -85,6 +88,9 @@ public class FetchCodeFragment extends SerialPortFragment implements View.OnClic
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fetch_code, container, false);
+
+//        setSupportActionBar(toolbar);
+
          stringFetchCode = new StringBuffer("");
         oneBtn   = (Button) view.findViewById(R.id.btn_keybox_one);
         twoBtn   = (Button) view.findViewById(R.id.btn_keybox_two);
@@ -215,116 +221,24 @@ public class FetchCodeFragment extends SerialPortFragment implements View.OnClic
 //                break;
             case R.id.btn_keybox_ok:
                 String okStr = stringFetchCode.toString(); //StringBuffer转换为String
+                stringFetchCode = new StringBuffer("");
+                fetchCodeEditText.setText(stringFetchCode);
                 Log.i(TAG,"stringFetchCode="+stringFetchCode+stringFetchCode.equals("11000"));
              //向服务器提交数
-                for(int i=0;i<32;i++){
-                    if(okStr.equals("10"+i)){
-                       send(i);
-                    }
-                    else  if(okStr.equals("11000")){
-                        Intent intent = new Intent(getActivity(),ReplenishActivity.class);
+                if(okStr.equals("11000")){
+                    Intent intent = new Intent(getActivity(),ReplenishActivity.class);
 //                intent.putExtra("MainActivity", "message");
-                        startActivity(intent);
+                    startActivity(intent);
+                }
+                else {
+                    for (int i = 0; i < 31; i++) {
+                        String x = "100"+i;
+//                        Log.i(TAG,"stringFetchCode="+okStr+",x="+x+okStr.equals(x));
+                        if (okStr.equals(x)) {
+                         send(i);
+                        }
                     }
                 }
-//                      if(stringFetchCode.equals("1001")){
-//                    OpenDoorActivity. send(0);
-//                }
-//               else   if(stringFetchCode.equals("1002")){
-//                    OpenDoorActivity. send(1);
-//                }
-//                else   if(stringFetchCode.equals("1003")){
-//                    OpenDoorActivity. send(2);
-//                }
-//                else   if(stringFetchCode.equals("1004")){
-//                    OpenDoorActivity. send(3);
-//                }
-//                else   if(stringFetchCode.equals("1005")){
-//                    OpenDoorActivity. send(4);
-//                }
-//                else   if(stringFetchCode.equals("1006")){
-//                    OpenDoorActivity. send(5);
-//                }
-//                else   if(stringFetchCode.equals("1007")){
-//                    OpenDoorActivity. send(6);
-//                }
-//                else   if(stringFetchCode.equals("1008")){
-//                    OpenDoorActivity. send(7);
-//                }
-//                else   if(stringFetchCode.equals("1009")){
-//                    OpenDoorActivity. send(8);
-//                }
-//                else   if(stringFetchCode.equals("1010")){
-//                    OpenDoorActivity. send(9);
-//                }
-//                else   if(stringFetchCode.equals("1011")){
-//                    OpenDoorActivity. send(10);
-//                }
-//                else   if(stringFetchCode.equals("1012")){
-//                    OpenDoorActivity. send(11);
-//                }
-//                else   if(stringFetchCode.equals("1013")){
-//                    OpenDoorActivity. send(12);
-//                }
-//                else   if(stringFetchCode.equals("1014")){
-//                    OpenDoorActivity. send(13);
-//                }
-//                else   if(stringFetchCode.equals("1015")){
-//                    OpenDoorActivity. send(14);
-//                }
-//                else   if(stringFetchCode.equals("1016")){
-//                    OpenDoorActivity. send(15);
-//                }
-//                else   if(stringFetchCode.equals("1017")){
-//                    OpenDoorActivity. send(16);
-//                }
-//                else   if(stringFetchCode.equals("1018")){
-//                    OpenDoorActivity. send(17);
-//                }
-//                else   if(stringFetchCode.equals("1019")){
-//                    OpenDoorActivity. send(18);
-//                }
-//                else   if(stringFetchCode.equals("1020")){
-//                    OpenDoorActivity. send(19);
-//                }
-//                else   if(stringFetchCode.equals("1021")){
-//                    OpenDoorActivity. send(20);
-//                }
-//                else   if(stringFetchCode.equals("1022")){
-//                    OpenDoorActivity. send(21);
-//                }
-//                else   if(stringFetchCode.equals("1023")){
-//                    OpenDoorActivity. send(22);
-//                }
-//                else   if(stringFetchCode.equals("1024")){
-//                    OpenDoorActivity. send(23);
-//                }
-//                else   if(stringFetchCode.equals("1025")){
-//                    OpenDoorActivity. send(24);
-//                }
-//                else   if(stringFetchCode.equals("1026")){
-//                    OpenDoorActivity. send(25);
-//                }
-//                else   if(stringFetchCode.equals("1027")){
-//                   send(26);
-//                }
-//                else   if(stringFetchCode.equals("1028")){
-//                   send(27);
-//                }
-//                else   if(stringFetchCode.equals("1029")){
-//                   send(28);
-//                }
-//                else   if(stringFetchCode.equals("1030")){
-//                    send(29);
-//                }
-//                else   if(stringFetchCode.equals("1031")){
-//                    send(30);
-//                }
-//                else   if(stringFetchCode.equals("1032")){
-//                    send(31);
-//                }
-
-
 
                 break;
                 default:
@@ -364,5 +278,12 @@ public class FetchCodeFragment extends SerialPortFragment implements View.OnClic
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onResume() {
+        stringFetchCode = new StringBuffer("");
+        fetchCodeEditText.setText(stringFetchCode);
+        super.onResume();
     }
 }

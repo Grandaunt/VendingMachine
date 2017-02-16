@@ -5,6 +5,10 @@
     android:padding="16dp"
     android:background="@color/White"
     tools:context="com.example.sjs.vendingmachine.HelpFragment">
+    <ScrollView
+        android:id="@+id/personal_scroll_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <LinearLayout
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -14,6 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="23dp"
         android:text="@string/helpInfo" />
 
     <ImageView
@@ -22,4 +27,5 @@
         android:src="@mipmap/ic_bjs"
         android:id="@+id/imageView2" />
 </LinearLayout>
+    </ScrollView>
 </FrameLayout>

@@ -2,6 +2,7 @@ package com.example.sjs.vendingmachine;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -10,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.sjs.vendingmachine.Adapter.RecyclerAdapter;
+import com.example.sjs.vendingmachine.Adapter.GoodsShowReAdapter;
 import com.example.sjs.vendingmachine.DB.Goods;
 import com.example.sjs.vendingmachine.DB.GoodsRepo;
 import com.example.sjs.vendingmachine.Http.GoodsBean;
@@ -45,7 +47,7 @@ import java.util.List;
  */
 public class GoodsFragment extends Fragment {
     public static String TAG="GoodsFragment";
-    private String URL="http://172.16.11.124:8080/MVNFHM//appInterface/getGoods.do";
+    private String URL="http://172.16.11.124:8080/sell//appInterface/getGoods.do";
 
     private RecyclerView Goos_RecyclerView;
 //    private RecyclerView.Adapter mAdapter;
@@ -53,7 +55,7 @@ public class GoodsFragment extends Fragment {
 //    private List<String> mDatas;
     private List<GoodsBean> GoodsBeanList;
     private ArrayList<HashMap<String, String>> showGoodsList;
-    private RecyclerAdapter mAdapter;
+    private GoodsShowReAdapter mAdapter;
     private ImageButton btn_up,btn_down;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -93,6 +95,8 @@ public class GoodsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_goods, container, false);
+
+
         x.view().inject(getActivity());
 //        context=this;
         //初始化showGoodsList并获取showGoodsList数据
@@ -119,21 +123,30 @@ public class GoodsFragment extends Fragment {
 //        recyclerView_one.setLayoutManager(new StaggeredGridLayoutManager(4,
 //                StaggeredGridLayoutManager.VERTICAL));
         //创建适配器，并且设置
-        mAdapter = new RecyclerAdapter(getActivity(),showGoodsList);
+        mAdapter = new GoodsShowReAdapter(getActivity(),showGoodsList);
         Goos_RecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickLitener(new RecyclerAdapter.OnItemClickLitener()
+        mAdapter.setOnItemClickLitener(new GoodsShowReAdapter.OnItemClickLitener()
         {
 
             @Override
-            public void onItemClick(View view, int position)
+            public void onItemClick(View view, int position, String num)
             {
                 Intent intent = new Intent(getActivity(),PayActivity.class);
-//                intent.putExtra("MainActivity", "message");
+                intent.putExtra("goodsNum", "num");
                 startActivity(intent);
+
 //                然后再新的Activity中：
 //                String str = getIntent().getExtras().getString("MainActivity");
-                Toast.makeText(getActivity(), position + " click",
+                  Toast.makeText(getActivity(), position + " click",
                         Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position,String num)
+            {
+//                Toast.makeText(getActivity(), position + " long click",
+//                        Toast.LENGTH_SHORT).show();
+//                mAdapter.removeData(position);
             }
         });
         return view;
@@ -188,6 +201,7 @@ public class GoodsFragment extends Fragment {
                                if (repo.getGoodsNum(cifPerBean.getGOODSNUM())) {
                                    repo.update(goods);
                                    Log.i(TAG, "goods表更新:" + cifPerBean.getGOODSNAME());
+                                   Log.i(TAG, "goods表更新:" + cifPerBean.getGOODSNAME());
                                } else {
                                    repo.insert(goods);
                                    Log.i(TAG, "goods表插入:" + cifPerBean.getGOODSNAME());
@@ -211,12 +225,14 @@ public class GoodsFragment extends Fragment {
 
                     @Override
                     public void onFinished() {
+
                         showGoodsList = new  ArrayList<HashMap<String, String>> ();
                         GoodsRepo repo = new GoodsRepo(getActivity());
+
                         showGoodsList = repo.showGoodsList();
-                        Log.i(TAG,"showGoodsList.size="+showGoodsList.size());
+                        Log.i(TAG,"showGoodsList.size="+showGoodsList);
                         //创建适配器，并且设置
-                        mAdapter = new RecyclerAdapter(getActivity(),showGoodsList);
+                        mAdapter = new GoodsShowReAdapter(getActivity(),showGoodsList);
                         Goos_RecyclerView.setAdapter(mAdapter);
                         Log.i(TAG,"onFinished");
                     }
@@ -251,6 +267,7 @@ public class GoodsFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        Log.i(TAG,"onDetach~~");
         mListener = null;
     }
 

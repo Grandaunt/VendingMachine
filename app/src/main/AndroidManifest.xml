@@ -30,7 +30,8 @@
         <activity android:name=".GoodsManagerActivity" />
         <activity android:name=".AisleManagerActivity" />
         <activity android:name=".MachineManagerActivity" />
-        <activity android:name=".DoorManagerActivity"></activity>
+        <activity android:name=".DoorManagerActivity" />
+        <activity android:name=".GoodsEditActivity"></activity>
     </application>
 
 </manifest>
