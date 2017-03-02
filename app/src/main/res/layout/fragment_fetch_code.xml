@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:background="@color/White"
-    android:layout_margin="16dp"
+    android:layout_margin="10dp"
     tools:context="com.example.sjs.vendingmachine.FetchCodeFragment">
 
 
@@ -16,29 +16,27 @@
         android:background="@color/White">
     <LinearLayout
         android:id="@+id/ly_et"
-        android:layout_height="120dp"
+        android:layout_height="80dp"
         android:layout_width="match_parent"
         android:paddingBottom="10dp"
-        android:background="@color/Gray"
+        android:background="@color/BGGray"
         android:orientation="horizontal">
         <EditText
             android:id="@+id/et_fetchcode"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
-            android:layout_weight="0.8"
+            android:layout_weight="0.9"
             android:background="@color/White"
             android:hint="@string/please_put_number"
-            android:textColorHint="@color/Gray"
-            android:textSize="68dp"/>
+            android:textColorHint="@color/colorAccent"
+            android:textSize="40dp"/>
 
         <ImageButton
             android:id="@+id/btn_keybox_ac"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
-            android:layout_weight="0.2"
+            android:layout_weight="0.1"
             android:src="@mipmap/ic_ac_red_64dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
             android:background="@color/White"/>
     </LinearLayout>
         <LinearLayout
@@ -47,7 +45,7 @@
             android:layout_below="@id/ly_et"
             android:layout_marginLeft="10dp"
 
-            android:background="@color/Gray"
+            android:background="@color/BGGray"
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_height="match_parent"
@@ -55,8 +53,8 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_weight="2.5"
-                android:background="@color/Gray"
-                android:textSize="68dp"
+                android:background="@color/colorAccent"
+                android:textSize="40dp"
                 >
 
                 <Button
@@ -65,20 +63,22 @@
                     android:layout_width="match_parent"
                     android:layout_weight="0.3"
                     android:background="@drawable/touch_bg"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:layout_marginRight="0.1dp"
+                    android:layout_marginBottom="0.2dp"
                     android:text="1"
-                    android:textSize="68dp"/>
+                    android:textColor="@color/TVGray"
+                    android:textSize="40dp"/>
 
                 <Button
                     android:id="@+id/btn_keybox_four"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_weight="0.3"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:layout_marginRight="0.1dp"
+                    android:layout_marginBottom="0.2dp"
                     android:background="@drawable/touch_bg"
-                    android:textSize="68dp"
+                    android:textSize="40dp"
+                    android:textColor="@color/TVGray"
                     android:text="4"/>
 
                 <Button
@@ -87,10 +87,10 @@
                     android:layout_width="match_parent"
                     android:layout_weight="0.3"
                     android:layout_marginRight="1dp"
-
                     android:background="@drawable/touch_bg"
-                    android:textSize="68dp"
-                    android:text="7"/>
+                    android:textSize="40dp"
+                    android:text="7"
+                    android:textColor="@color/TVGray"/>
                 <!--<Button-->
                     <!--android:id="@+id/btn_keybox_xing"-->
                     <!--android:layout_height="wrap_content"-->
@@ -105,7 +105,7 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_weight="2.5"
-                android:background="@color/Gray"
+                android:background="@color/colorAccent"
                 android:textSize="68dp"
                 >
                 <Button
@@ -113,10 +113,11 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_weight="0.3"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:layout_marginRight="0.1dp"
+                    android:layout_marginBottom="0.2dp"
                     android:background="@drawable/touch_bg"
-                    android:textSize="68dp"
+                    android:textColor="@color/TVGray"
+                    android:textSize="40dp"
                     android:text="2"
                    />
                 <Button
@@ -124,10 +125,11 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_weight="0.3"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:layout_marginRight="0.1dp"
+                    android:layout_marginBottom="0.2dp"
                     android:background="@drawable/touch_bg"
-                    android:textSize="68dp"
+                    android:textColor="@color/TVGray"
+                    android:textSize="40dp"
                     android:text="5"/>
                 <Button
                     android:id="@+id/btn_keybox_eight"
@@ -136,7 +138,8 @@
                     android:layout_weight="0.3"
                     android:layout_marginRight="1dp"
 
-                    android:textSize="68dp"
+                    android:textColor="@color/TVGray"
+                    android:textSize="40dp"
                     android:background="@drawable/touch_bg"
                     android:text="8"/>
                 <!--<Button-->
@@ -153,6 +156,7 @@
                 android:layout_width="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
+                android:background="@color/colorAccent"
                 android:layout_weight="2.5"
                 >
 
@@ -161,10 +165,11 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_weight="0.3"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:layout_marginRight="0.1dp"
+                    android:layout_marginBottom="0.2dp"
                     android:background="@drawable/touch_bg"
-                    android:textSize="68dp"
+                    android:textColor="@color/TVGray"
+                    android:textSize="40dp"
                     android:text="3"/>
 
                 <Button
@@ -172,20 +177,22 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_weight="0.3"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:layout_marginRight="0.1dp"
+                    android:layout_marginBottom="0.2dp"
                     android:background="@drawable/touch_bg"
-                    android:textSize="68dp"
+                    android:textColor="@color/TVGray"
+                    android:textSize="40dp"
                     android:text="6"/>
+
                 <Button
                 android:id="@+id/btn_keybox_nine"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                    android:layout_weight="0.3"
-                    android:layout_marginRight="1dp"
-
-                    android:background="@drawable/touch_bg"
-                    android:textSize="68dp"
+                android:layout_weight="0.3"
+                android:background="@drawable/touch_bg"
+                android:textColor="@color/TVGray"
+                    android:layout_marginRight="0.1dp"
+                android:textSize="40dp"
                 android:text="9"/>
             </LinearLayout>
             <LinearLayout
@@ -194,16 +201,18 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_weight="2.5"
+                android:background="@color/colorAccent"
                 >
                 <Button
                     android:id="@+id/btn_keybox_zero"
-                    android:layout_height="88dp"
+                    android:layout_height="74dp"
                     android:layout_width="match_parent"
                     android:layout_weight="0.05"
-                    android:layout_marginBottom="1dp"
+                    android:layout_marginBottom="0.2dp"
                     android:background="@drawable/touch_bg"
-                    android:textSize="68dp"
-                    android:text="0"/>
+                    android:textSize="40dp"
+                    android:text="0"
+                    android:textColor="@color/TVGray"/>
 
 
                 <!--<Button-->
@@ -218,10 +227,12 @@
                     android:id="@+id/btn_keybox_ok"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:layout_weight="0.8"
+                    android:layout_weight="0.95"
                     android:background="@drawable/touch_bg_accent"
                     android:text="@string/ok"
-                    android:textSize="68dp"/>
+                    android:textSize="50dp"
+                    android:textColor="@color/White"
+                    />
 
             </LinearLayout>
         </LinearLayout>

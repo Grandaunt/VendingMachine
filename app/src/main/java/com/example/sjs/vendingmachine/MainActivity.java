@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                showFloatView();
                 Log.i(TAG,"<<ly_goods>>");
                 im_goods.setImageResource(R.mipmap.ic_goods_red_200dp);
-                tv_goods.setTextColor(Color.RED);
+                tv_goods.setTextColor(this.getResources().getColor(R.color.colorPrimaryDark));
                 im_fetchcode.setImageResource(R.mipmap.ic_fetchcode_black_200);
                 tv_fetchcode.setTextColor(Color.BLACK);
                 im_help.setImageResource(R.mipmap.ic_help_black_200dp);
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 im_goods.setImageResource(R.mipmap.ic_goods_black_200dp);
                 tv_goods.setTextColor(Color.BLACK);
                 im_fetchcode.setImageResource(R.mipmap.ic_fetchcode_red_200);
-                tv_fetchcode.setTextColor(Color.RED);
+                tv_fetchcode.setTextColor(this.getResources().getColor(R.color.colorPrimaryDark));
                 im_help.setImageResource(R.mipmap.ic_help_black_200dp);
                 tv_help.setTextColor(Color.BLACK);
                 if (mFetchCodeFragment == null) {
@@ -163,9 +163,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 im_goods.setImageResource(R.mipmap.ic_goods_black_200dp);
                 tv_goods.setTextColor(Color.BLACK);
                 im_fetchcode.setImageResource(R.mipmap.ic_fetchcode_black_200);
-                tv_fetchcode.setTextColor(Color.BLACK);
+                tv_fetchcode.setTextColor(this.getResources().getColor(R.color.colorPrimaryDark));
                 im_help.setImageResource(R.mipmap.ic_help_red_200dp);
-                tv_help.setTextColor(Color.RED);
+                tv_help.setTextColor(this.getResources().getColor(R.color.colorPrimaryDark));
 //                Intent intent = new Intent(MainActivity.this,OpenDoorActivity.class);
 ////                intent.putExtra("MainActivity", "message");
 //                startActivity(intent);

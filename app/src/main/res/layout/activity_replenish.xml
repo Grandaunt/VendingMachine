@@ -5,19 +5,19 @@
     android:id="@+id/activity_replenish"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     android:gravity="center"
-    android:background="@color/Gray"
+    android:background="@color/BGGray"
     tools:context="com.example.sjs.vendingmachine.ReplenishActivity"
     android:orientation="vertical">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/rep_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="?attr/colorPrimary"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        android:padding="10dp"
+        app:titleTextAppearance="@style/ToolbarTitle"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <LinearLayout
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/White"
-                android:textSize="36dp"
+                android:textSize="22dp"
                 android:text="商品管理"/>
             </LinearLayout>
         <LinearLayout
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/White"
-                android:textSize="36dp"
+                android:textSize="22dp"
                 android:text="货道管理"/>
         </LinearLayout>
         </LinearLayout>
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/White"
-            android:textSize="36dp"
+            android:textSize="22dp"
             android:text="设备参数"/>
     </LinearLayout>
     <LinearLayout
@@ -90,7 +90,7 @@
             android:layout_height="match_parent"
             android:background="@color/White"
             android:text="格子柜操作"
-            android:textSize="36dp"/>
+            android:textSize="22dp"/>
     </LinearLayout>
     </LinearLayout>
 

@@ -188,7 +188,7 @@ public class GoodsRepo {
                 +Goods.GoodsLight+","
                 +Goods.GoodsLife+
                 " FROM "+Goods.TABLE +
-                "  WHERE " + Goods.GoodsStatus + " = '" + 0 + "'";
+                "  WHERE " + Goods.GoodsStatus + " = '" + 1 + "'";
 
 
        Log.i(TAG,selectQuery);

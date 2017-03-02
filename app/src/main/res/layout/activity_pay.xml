@@ -5,104 +5,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/BGGray"
     tools:context="com.example.sjs.vendingmachine.PayActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="0.9"
+        android:layout_weight="0.95"
+        android:padding="10dp"
         android:gravity="center"
         android:id="@+id/linearLayout">
+
         <LinearLayout
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="wrap_content"
-            android:padding="10dp"
+            android:padding="2dp"
             android:gravity="center"
             android:orientation="vertical"
+            android:background="@color/White"
+            android:layout_margin="2dp"
+
             >
+            <ImageView
+                android:id="@+id/im_goods_pay"
+                android:layout_height="200dp"
+                android:layout_width="200dp"
+                android:src="@mipmap/testimage"/>
             <TextView
                 android:id="@+id/tv_goods_pay_name"
                 android:layout_height="wrap_content"
-                android:layout_width="180dp"
-                android:gravity="center"
-                android:padding="10dp"
-                android:background="@color/colorAccent"
+                android:layout_width="wrap_content"
                 android:text="@string/testname"
-                android:textSize="32dp"
+                android:textColor="@color/TVGray"
+                android:textSize="22dp"
                 />
-            <TextView
-                android:id="@+id/tv_goods_pay_price"
-                android:layout_height="wrap_content"
-                android:layout_width="180dp"
+            <LinearLayout
+                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:padding="10dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/testprice"
-                android:textColor="@color/colorAccent"
-                />
+                >
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:textSize="22dp"
+                    android:textColor="@color/Red"
+                    android:text="￥"/>
+                <TextView
+                    android:id="@+id/tv_goods_pay_price"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:textSize="22dp"
+                    android:textColor="@color/Red"
+                    android:text="6.00"/>
+            </LinearLayout>
+
         </LinearLayout>
         <ImageView
-            android:id="@+id/im_goods_pay"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="10dp"
-            android:src="@mipmap/testimage"/>
+            android:id="@+id/im_goods_zflc"
+            android:layout_height="match_parent"
+            android:background="@color/White"
+            android:layout_width="320dp"
+            android:layout_margin="2dp"
+            android:src="@mipmap/zfb_zflc"/>
+
         <ImageView
             android:id="@+id/im_goods_erweima"
             android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:padding="10dp"
-            android:src="@mipmap/paytest"/>
+            android:layout_width="240dp"
+            android:layout_margin="2dp"
+            android:background="@color/White"
+            android:src="@mipmap/wx_ewm"/>
     </LinearLayout>
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.005"
+        android:layout_height="60dp"
         android:background="@color/White"
         android:orientation="horizontal"
+
 >
         <LinearLayout
             android:id="@+id/ly_pay_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:background="@color/Red"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
             android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:gravity="left|center"
+            android:orientation="horizontal">
             <ImageView
                 android:id="@+id/image_goods"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:src="@mipmap/ic_back_white_128"
                 />
             <TextView
-                android:id="@+id/text_goods"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:textColor="@color/White"
+                android:textColor="@color/TVGray"
                 android:text="@string/back"
                 />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ly_fetchcode"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:background="@color/White"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:orientation="vertical">
             <TextView
-                android:id="@+id/text_fetchcode"
+                android:id="@+id/tv_CountDownTimer"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="@string/tiamer"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/Blue"
+                android:textSize="22dp"
                 />
         </LinearLayout>
+
 
 
         <LinearLayout
@@ -142,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_margin="10dp"
-                android:src="@mipmap/ic_wxpay_128dp"
+                android:src="@mipmap/ic_wxpay_bg"
                 />
             <TextView
                 android:id="@+id/text_wxpay"
@@ -151,52 +169,52 @@
                 android:text="@string/wxpay"
                 />
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ly_xjpay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:background="@color/White"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/image_xjpay"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_margin="10dp"
-                android:src="@mipmap/ic_xjpay_128dp"
-                />
-            <TextView
-                android:id="@+id/text_xjpay"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/xjpay"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ly_yktpay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:background="@color/White"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/image_yktpay"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_margin="10dp"
-                android:src="@mipmap/ic_yktpay_128dp"
-                />
-            <TextView
-                android:id="@+id/text_yktpay"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/yktpay"
-                />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ly_xjpay"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="0.3"-->
+            <!--android:background="@color/White"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
+            <!--<ImageView-->
+                <!--android:id="@+id/image_xjpay"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:src="@mipmap/ic_xjpay_128dp"-->
+                <!--/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/text_xjpay"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:text="@string/xjpay"-->
+                <!--/>-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ly_yktpay"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="0.3"-->
+            <!--android:background="@color/White"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
+            <!--<ImageView-->
+                <!--android:id="@+id/image_yktpay"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:src="@mipmap/ic_yktpay_128dp"-->
+                <!--/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/text_yktpay"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:text="@string/yktpay"-->
+                <!--/>-->
+        <!--</LinearLayout>-->
         <LinearLayout
             android:id="@+id/ly_ylpay"
             android:layout_width="wrap_content"
@@ -211,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_margin="10dp"
-                android:src="@mipmap/ic_ylpay_128dp"
+                android:src="@mipmap/ic_ylpay_bg"
                 />
             <TextView
                 android:id="@+id/text_ylpay"

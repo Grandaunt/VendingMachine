@@ -6,17 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.sjs.vendingmachine.AisleManagerActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/BGGray">
     <android.support.v7.widget.Toolbar
         android:id="@+id/aisle_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        android:padding="10dp"
+        app:titleTextAppearance="@style/ToolbarTitle"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@color/White">
     <Button
         android:id="@+id/btn_open_alldoor"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:text="一键补货"/>
+        </LinearLayout>
 </LinearLayout>

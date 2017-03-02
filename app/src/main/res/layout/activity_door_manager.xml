@@ -10,8 +10,10 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/door_manager_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        android:padding="10dp"
+        app:titleTextAppearance="@style/ToolbarTitle"
         android:layout_marginBottom="10dp"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 <LinearLayout
@@ -46,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="50dp"
+        android:background="@color/White"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,51 +69,46 @@
 
             <CheckBox
                 android:text="1"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
+                />
 
             <CheckBox
                 android:text="2"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="3"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="4"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="5"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="6"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
 
 
@@ -123,50 +121,44 @@
             >
             <CheckBox
                 android:text="7"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
-                /> <CheckBox
-            android:text="8"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_margin="50dp"
-            android:scaleX="2.70"
-            android:scaleY="2.70"
-            />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
+                />
+            <CheckBox
+                android:text="8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
+                />
             <CheckBox
                 android:text="9"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"/>
-
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"/>
             <CheckBox
                 android:text="10"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="11"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="12"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
 
 
@@ -178,52 +170,45 @@
             >
             <CheckBox
                 android:text="13"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="14"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="15"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 /> <CheckBox
             android:text="16"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_margin="50dp"
-            android:scaleX="2.70"
-            android:scaleY="2.70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            style="@style/CustomCheckBoxTheme"
             />
             <CheckBox
                 android:text="17"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"/>
 
             <CheckBox
                 android:text="18"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
-
 
         </LinearLayout>
         <LinearLayout
@@ -233,51 +218,47 @@
             >
             <CheckBox
                 android:text="19"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="20"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="21"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
+
             <CheckBox
                 android:text="22"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="23"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 /> <CheckBox
             android:text="24"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_margin="50dp"
-            android:scaleX="2.70"
-            android:scaleY="2.70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            style="@style/CustomCheckBoxTheme"
             />
+
             </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -286,83 +267,76 @@
             >
             <CheckBox
                 android:text="25"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"/>
 
             <CheckBox
                 android:text="26"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="27"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="28"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="29"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
             <CheckBox
                 android:text="30"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/CustomCheckBoxTheme"
                 />
-
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
-            <CheckBox
-                android:text="31"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
-                />
-            <CheckBox
-                android:text="32"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_margin="50dp"
-                android:scaleX="2.70"
-                android:scaleY="2.70"
-                />
+
+        <CheckBox
+            android:text="31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            style="@style/CustomCheckBoxTheme"
+            />
+        <CheckBox
+            android:text="32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            style="@style/CustomCheckBoxTheme"
+            />
             </LinearLayout>
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
     >
     <Button
+        android:id="@+id/btn_open_nohave_door"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="打开柜门"

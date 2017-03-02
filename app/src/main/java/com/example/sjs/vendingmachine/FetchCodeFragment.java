@@ -231,7 +231,7 @@ public class FetchCodeFragment extends SerialPortFragment implements View.OnClic
                     startActivity(intent);
                 }
                 else {
-                    for (int i = 0; i < 31; i++) {
+                    for (int i = 0; i < 32; i++) {
                         String x = "100"+i;
 //                        Log.i(TAG,"stringFetchCode="+okStr+",x="+x+okStr.equals(x));
                         if (okStr.equals(x)) {
@@ -255,12 +255,14 @@ public class FetchCodeFragment extends SerialPortFragment implements View.OnClic
 //        if (TextUtils.isEmpty(open_num)) {
 //            return;
 //        }
-        Log.i(TAG,open_num+"send已发送open_num");
+        Log.i(TAG,open_num+"<<<<<<<<send已发送>>>>>>>>");
         byte [] HxStr = openDoorManager.hex2byte(openDoorManager.open_numarr[open_num]);
+        Log.i(TAG,"<<<<<<<<openDoorManager.open_numarr[open_num]>>>>>>>>"+openDoorManager.open_numarr[open_num]);
+        Log.i(TAG,"<<<<<<<<openDoorManager.hex2byte(openDoorManager.open_numarr[open_num])>>>>>>>>"+openDoorManager.hex2byte(openDoorManager.open_numarr[open_num]));
         Message message = Message.obtain();
 //        message.obj = open_num.getBytes();
         message.obj =  HxStr;
-        Log.i(TAG,HxStr+"send已发送");
+//        Log.i(TAG,HxStr+"send已发送");
         sendingHandler.sendMessage(message);
 
 

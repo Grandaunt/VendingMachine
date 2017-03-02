@@ -73,7 +73,7 @@ public class GoodsManagerReAdapter extends RecyclerView.Adapter<GoodsManagerReAd
 //        holder.imGoods.setImageResource(mTitles[position]);
          decimalFormat=new DecimalFormat(".00");
         //构造方法的字符格式这里如果小数不足2位,会以0补足.
-        imageUrl ="http://172.16.11.124:8080/sell/static/uploadFiles/uploadImgs/"+mGoodsList.get(position).get("goodsImage");
+        imageUrl ="http://123.57.29.113:8080/sell/static/uploadFiles/uploadImgs/"+mGoodsList.get(position).get("goodsImage");
         Log.i(TAG,"imageUrl="+imageUrl);
 //        "http://172.16.11.124:8080/MVNFHM/uploadFiles/uploadImgs/20170209/d9205a29278644fdbe6b37421bab17bb.png";
         number = Integer.parseInt(mGoodsList.get(position).get("goodsNumber"));
@@ -95,7 +95,7 @@ public class GoodsManagerReAdapter extends RecyclerView.Adapter<GoodsManagerReAd
 //        x.image().bind(imageView, iconUrl,imageOptions);
         x.image().bind(holder.imGoods, imageUrl, options);
         holder.tvGoodsName.setText(mGoodsList.get(position).get("goodsName"));
-        holder.tvGoodsNumber.setText(mGoodsList.get(position).get("goodsNumber"));
+//        holder.tvGoodsNumber.setText(mGoodsList.get(position).get("goodsNumber"));
         holder.tvGoodsSumPrice.setText(decimalFormat.format(sumPrice));
 
         // 如果设置了回调，则设置点击事件
@@ -128,6 +128,9 @@ public class GoodsManagerReAdapter extends RecyclerView.Adapter<GoodsManagerReAd
                 }
             });
         }
+        else{
+            Log.i(TAG,"mOnItemClickLitener = null");
+        }
     }
 
     @Override
@@ -145,7 +148,7 @@ public class GoodsManagerReAdapter extends RecyclerView.Adapter<GoodsManagerReAd
             super(view);
             imGoods = (ImageView)view.findViewById(R.id.im_item_goods_manager);
             tvGoodsName = (TextView) view.findViewById(R.id.tv_goods_manager_name);
-            tvGoodsNumber = (TextView) view.findViewById(R.id.tv_goods_manager_number);
+//            tvGoodsNumber = (TextView) view.findViewById(R.id.tv_goods_manager_number);
             tvGoodsSumPrice = (TextView) view.findViewById(R.id.tv_goods_manager_sumPrice);
         }
     }

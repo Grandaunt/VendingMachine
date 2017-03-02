@@ -1,18 +1,30 @@
 package com.example.sjs.vendingmachine;
 
 import android.graphics.Color;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
-public class DoorManagerActivity extends AppCompatActivity {
+import com.example.sjs.vendingmachine.Manager.openDoorManager;
+import com.example.sjs.vendingmachine.SerialUtil.SerialPortActivity;
 
+public class DoorManagerActivity  extends SerialPortActivity {
+    private static  String TAG="AisleManagerActivity";
+    private Button openAllDoor,opennohasDoor;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_door_manager);
         initView();
+    }
+
+    @Override
+    protected void onDataReceived(byte[] buffer, int size) {
+
     }
 
     private void initView(){
@@ -27,6 +39,41 @@ public class DoorManagerActivity extends AppCompatActivity {
                 finish();
             }
         });
+        openAllDoor = (Button) findViewById(R.id.btn_all_open);
+        openAllDoor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i = 0 ; i<32;i++){
+                    send(i);
+                }
+            }
+        });
+        opennohasDoor = (Button) findViewById(R.id.btn_nohave_open);
+        opennohasDoor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i = 0 ; i<32;i++){
+                    send(i);
+                }
+            }
+        });
+
+
+    }
+
+    public void send(int open_num) {
+
+//        String text = mEditTextEmission.getText().toString();
+//        if (TextUtils.isEmpty(open_num)) {
+//            return;
+//        }
+        Log.i(TAG,open_num+"send已发送open_num");
+        byte [] HxStr = openDoorManager.hex2byte(openDoorManager.open_numarr[open_num]);
+        Message message = Message.obtain();
+//        message.obj = open_num.getBytes();
+        message.obj =  HxStr;
+        Log.i(TAG,HxStr+"send已发送");
+        sendingHandler.sendMessage(message);
 
 
     }

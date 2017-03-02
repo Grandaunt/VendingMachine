@@ -9,28 +9,43 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.sjs.vendingmachine.Adapter.GoodsManagerReAdapter;
 
+import com.example.sjs.vendingmachine.Adapter.GoodsShowReAdapter;
+import com.example.sjs.vendingmachine.DB.Goods;
 import com.example.sjs.vendingmachine.DB.GoodsRepo;
+import com.example.sjs.vendingmachine.Http.GoodsBean;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class GoodsManagerActivity extends AppCompatActivity {
+    private String URL="http://123.57.29.113:8080/sell/appInterface/getGoods.do";
     private static  String TAG = "GoodsManagerActivity";
     private RecyclerView Goos_RecyclerView;
     //    private RecyclerView.Adapter mAdapter;
     private LinearLayoutManager mLayoutManager;
+    private List<GoodsBean> GoodsBeanList;
     private ArrayList<HashMap<String, String>> showGoodsManagerList;
     private List<String> mDatas;
     private GoodsManagerReAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_goods_mmanager);
+        setContentView(R.layout.activity_goods_manager);
+        x.view().inject(this);
+//        context=this;
         initData();
 
     }
@@ -81,11 +96,102 @@ public class GoodsManagerActivity extends AppCompatActivity {
 
             @Override
             public void onItemLongClick(View view, int position, String numm) {
-
+                Intent intent = new Intent(GoodsManagerActivity.this,GoodsEditActivity.class);
+//                intent.putExtra("MainActivity", "message");
+                startActivity(intent);
             }
 
 
         });
+
+        RequestParams params = new RequestParams(URL);
+        //根据当前请求方式添加参数位置
+        params.addParameter("userAccount", "11000");
+        Log.i(TAG,"params="+params);
+        x.http().post(params, new Callback.CacheCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Log.i(TAG, "result:" + result);
+
+                if(result.equals("01")||result == "01")
+                {
+                    Toast.makeText(GoodsManagerActivity.this,"无数据",Toast.LENGTH_LONG).show();
+
+                }
+                else {
+                    Gson gson = new Gson();
+                    GoodsBeanList = gson.fromJson(result, new TypeToken<List<GoodsBean>>() {
+                    }.getType());
+
+//                    CIFPersInfBean cifPerBean = gson.fromJson(result, CIFPersInfBean.class);
+                    if (GoodsBeanList.size() > 0) {
+                        for (int i = 0; i < GoodsBeanList.size(); i++) {
+                            GoodsBean cifPerBean = GoodsBeanList.get(i);
+                            Goods goods = new Goods();
+                            goods.goodsId = cifPerBean.getGOODS_ID();
+                            goods.goodsNum = cifPerBean.getGOODSNUM();
+                            goods.goodsName = cifPerBean.getGOODSNAME();
+                            goods.goodsPrice = cifPerBean.getGOODSPRICE();
+                            goods.gooodsInfo = cifPerBean.getGOODSINFO();
+
+                            goods.goodsImage = cifPerBean.getGOODSIMAGE();
+                            goods.goodsType = cifPerBean.getGOODSTYPE();
+                            goods.goodsStatus = cifPerBean.getGOODSSTATUS();
+                            goods.goodsNumber = cifPerBean.getGOODSNUMBER();
+                            goods.goodsCost = cifPerBean.getGOODSCOST();
+
+                            goods.goodsTemperature = cifPerBean.getGOODSTEMPERATURE();
+                            goods.goodsLight = cifPerBean.getGOODSLIGHT();
+                            goods.goodsLife = cifPerBean.getGOODSLIFE();
+
+                            GoodsRepo repo = new GoodsRepo(GoodsManagerActivity.this);
+                            Log.i(TAG, "Goods表:cifPerBean.getGoodsId()" + cifPerBean.getGOODSNUM());
+                            if (repo.getGoodsNum(cifPerBean.getGOODSNUM())) {
+                                repo.update(goods);
+                                Log.i(TAG, "goods表更新:" + cifPerBean.getGOODSNAME());
+                                Log.i(TAG, "goods表更新:" + cifPerBean.getGOODSNAME());
+                            } else {
+                                repo.insert(goods);
+                                Log.i(TAG, "goods表插入:" + cifPerBean.getGOODSNAME());
+                            }
+
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                Log.i(TAG,"onError="+ex);
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                Log.i(TAG,"onCancelled="+cex);
+            }
+
+            @Override
+            public void onFinished() {
+
+                showGoodsManagerList = new  ArrayList<HashMap<String, String>> ();
+                GoodsRepo repo = new GoodsRepo(GoodsManagerActivity.this);
+
+                showGoodsManagerList = repo.showGoodsList();
+                Log.i(TAG,"showGoodsList.size="+showGoodsManagerList);
+                //创建适配器，并且设置
+                mAdapter = new GoodsManagerReAdapter(GoodsManagerActivity.this,showGoodsManagerList);
+                Goos_RecyclerView.setAdapter(mAdapter);
+                Log.i(TAG,"onFinished");
+            }
+
+            @Override
+            public boolean onCache(String result) {
+                Log.i(TAG,"onCache"+result);
+                return false;
+            }
+        });
+
 
     }
 

@@ -39,7 +39,109 @@ public class Goods {
     public static final  String  GoodsLife="goodsLife";
 
 
+    public String getGoodsNum() {
+        return goodsNum;
+    }
 
+    public void setGoodsNum(String goodsNum) {
+        this.goodsNum = goodsNum;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
+
+    public String getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    public String getGoodsPrice() {
+        return goodsPrice;
+    }
+
+    public void setGoodsPrice(String goodsPrice) {
+        this.goodsPrice = goodsPrice;
+    }
+
+    public String getGooodsInfo() {
+        return gooodsInfo;
+    }
+
+    public void setGooodsInfo(String gooodsInfo) {
+        this.gooodsInfo = gooodsInfo;
+    }
+
+    public String getGoodsImage() {
+        return goodsImage;
+    }
+
+    public void setGoodsImage(String goodsImage) {
+        this.goodsImage = goodsImage;
+    }
+
+    public String getGoodsType() {
+        return goodsType;
+    }
+
+    public void setGoodsType(String goodsType) {
+        this.goodsType = goodsType;
+    }
+
+    public String getGoodsStatus() {
+        return goodsStatus;
+    }
+
+    public void setGoodsStatus(String goodsStatus) {
+        this.goodsStatus = goodsStatus;
+    }
+
+    public String getGoodsNumber() {
+        return goodsNumber;
+    }
+
+    public void setGoodsNumber(String goodsNumber) {
+        this.goodsNumber = goodsNumber;
+    }
+
+    public String getGoodsCost() {
+        return goodsCost;
+    }
+
+    public void setGoodsCost(String goodsCost) {
+        this.goodsCost = goodsCost;
+    }
+
+    public String getGoodsTemperature() {
+        return goodsTemperature;
+    }
+
+    public void setGoodsTemperature(String goodsTemperature) {
+        this.goodsTemperature = goodsTemperature;
+    }
+
+    public String getGoodsLight() {
+        return goodsLight;
+    }
+
+    public void setGoodsLight(String goodsLight) {
+        this.goodsLight = goodsLight;
+    }
+
+    public String getGoodsLife() {
+        return goodsLife;
+    }
+
+    public void setGoodsLife(String goodsLife) {
+        this.goodsLife = goodsLife;
+    }
 
     //商品id
     public  String  goodsId;
@@ -68,111 +170,6 @@ public class Goods {
     //商品保质期
     public  String  goodsLife;
 
-    //属性
-
-    public String getGoodsId() {
-        return goodsId;
-    }
-
-    public static String getGoodsNum() {
-        return GoodsNum;
-    }
-
-    public void setGoodsNum(String goodsNum) {
-        this.goodsNum = goodsNum;
-    }
-
-    public static String getGoodsName() {
-        return GoodsName;
-    }
-
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
-    }
-
-    public static String getGoodsPrice() {
-        return GoodsPrice;
-    }
-
-    public void setGoodsPrice(String goodsPrice) {
-        this.goodsPrice = goodsPrice;
-    }
-
-    public static String getGooodsInfo() {
-        return GooodsInfo;
-    }
-
-    public void setGooodsInfo(String gooodsInfo) {
-        this.gooodsInfo = gooodsInfo;
-    }
-
-    public static String getGoodsImage() {
-        return GoodsImage;
-    }
-
-    public void setGoodsImage(String goodsImage) {
-        this.goodsImage = goodsImage;
-    }
-
-    public static String getGoodsType() {
-        return GoodsType;
-    }
-
-    public void setGoodsType(String goodsType) {
-        this.goodsType = goodsType;
-    }
-
-    public static String getGoodsStatus() {
-        return GoodsStatus;
-    }
-
-    public void setGoodsStatus(String goodsStatus) {
-        this.goodsStatus = goodsStatus;
-    }
-
-    public static String getGoodsNumber() {
-        return GoodsNumber;
-    }
-
-    public void setGoodsNumber(String goodsNumber) {
-        this.goodsNumber = goodsNumber;
-    }
-
-    public static String getGoodsCost() {
-        return GoodsCost;
-    }
-
-    public void setGoodsCost(String goodsCost) {
-        this.goodsCost = goodsCost;
-    }
-
-    public static String getGoodsLight() {
-        return GoodsLight;
-    }
-
-    public void setGoodsLight(String goodsLight) {
-        this.goodsLight = goodsLight;
-    }
-
-    public static String getGoodsTemperature() {
-        return GoodsTemperature;
-    }
-
-    public void setGoodsTemperature(String goodsTemperature) {
-        this.goodsTemperature = goodsTemperature;
-    }
-
-    public static String getGoodsLife() {
-        return GoodsLife;
-    }
-
-    public void setGoodsLife(String goodsLife) {
-        this.goodsLife = goodsLife;
-    }
-
-    public void setGoodsId(String goodsId) {
-        this.goodsId = goodsId;
-    }
 
     @Override
     public String toString() {

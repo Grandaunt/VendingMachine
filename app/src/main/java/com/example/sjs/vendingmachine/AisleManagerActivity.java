@@ -34,9 +34,9 @@ public class AisleManagerActivity extends SerialPortActivity {
         openAllDoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             for(int i = 0 ; i<32;i++){
-                 send(i);
-             }
+                for(int i = 0 ; i<32;i++){
+                    send(i);
+                }
             }
         });
     }
@@ -54,6 +54,9 @@ public class AisleManagerActivity extends SerialPortActivity {
 //        }
         Log.i(TAG,open_num+"send已发送open_num");
         byte [] HxStr = openDoorManager.hex2byte(openDoorManager.open_numarr[open_num]);
+
+        Log.i(TAG,"<<<<<<<<openDoorManager.open_numarr[open_num]>>>>>>>>"+openDoorManager.open_numarr[open_num]);
+        Log.i(TAG,"<<<<<<<<openDoorManager.hex2byte(openDoorManager.open_numarr[open_num])>>>>>>>>"+openDoorManager.hex2byte(openDoorManager.open_numarr[open_num]));
         Message message = Message.obtain();
 //        message.obj = open_num.getBytes();
         message.obj =  HxStr;
